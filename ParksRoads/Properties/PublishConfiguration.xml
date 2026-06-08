@@ -1,0 +1,75 @@
+﻿<Publish>
+	<!--Id must be set in order to update existing mod. it is not required for publishing mod for the first time-->
+	<ModId Value="" />
+	<!--Name of the mod to display to players-->
+	<DisplayName Value="Parks + Road Repairs" />
+	<!--Short description of the mod-->
+	<ShortDescription Value="Parks and Road Repairs, and adjust all Road wear damage rates." />
+	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
+	<!--LongDescription Value="This is a long description" /-->
+	<LongDescription>
+### Parks and Road Repairs 
+
+
+
+Everything is OPTIONAL - you choose!
+
+- Parks/Roads Maintenance
+
+
+- **Parks + Roads Repairs**: fleet size, work shift + rate
+- Road wear (beta): scale speed roads accumulate damage over time
+
+
+- *Adjust Sliders* at any time, no restart needed; supports switching cities.
+- No Harmony or Reflection used; more compatible - less likely to break on patch days.
+- Safe to remove any time (use Reset buttons to return to vanilla game default values).
+
+
+### Support and feedback
+- If the mod helps you, give it a Like, it's free + easy :)
+
+- Feedback on: Github, Discord links on the right.
+
+### Credits
+- River-Mochi: author
+- yenyang: code review and testing.
+- Necko1996: testing
+
+
+### 11 Languages
+
+- English, Français, Deutsch, Español, Italiano, Polski Polish, Português Brazilian
+- 한국어, 日本語, 简体中文 (Simplified Chinese), 繁體中文 Traditional Chinese
+
+
+
+</LongDescription>
+	<!--Thumbnail-->
+	<Thumbnail Value="Properties/Thumbnail-PwP03.jpg" />
+	<!--Screenshot, can be set multiple times-->
+	<Screenshot Value="Properties/image10-Transit.jpg" />
+    <Screenshot Value="Properties/image15-PwP-Before-After.jpg" />
+	<Screenshot Value="Properties/image20-Passengers.jpg" />
+	<Screenshot Value="Properties/image30-Industry.jpg" />
+	<Screenshot Value="Properties/image40-Maintenance.jpg" />
+    <Screenshot Value="Properties/image50-Senryu-PwP.jpg" />
+	<!--Tag, can be set multiple times-->
+	<Tag Value="Code Mod" />
+	<!--Link to the forum post where the mod can be discussed-->
+	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/public-works-plus.1910233/" />
+	<!--Version of the mod-->
+	<ModVersion Value="2.1.1" />
+	<!--Recommended version of the base game to use the mod-->
+	<GameVersion Value="1.5.*" />
+	<!--Dependency for the mod, can be set multiple times-->
+	<Dependency Id="" />
+	<!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
+<ChangeLog>
+- added logging utils, improved logging reliability.
+- no gameplay changes, just internal.
+</ChangeLog>
+	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
+<ExternalLink Type="discord" Url="https://discord.gg/HTav7ARPs2" />
+<ExternalLink Type="github" Url="https://github.com/River-Mochi/ParksRoads" />
+</Publish>
