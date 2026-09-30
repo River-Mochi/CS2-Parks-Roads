@@ -11,10 +11,10 @@
 
 namespace ParksRoads
 {
-    using Colossal;
     using System.Collections.Generic;
+    using Colossal;
 
-    public sealed class LocaleEN : IDictionarySource
+    public class LocaleEN : IDictionarySource
     {
         private readonly PRLSettings m_Setting;
 
