@@ -6,7 +6,7 @@
 # This notice MUST be kept with copies or substantial portions of this code.
 # ================= </copyright> ======================
 
-# version 0.6.1
+# version 0.6.3
 """
 Add standard River-Mochi GPL file headers to source files.
 
@@ -38,11 +38,6 @@ Not supported on purpose:
   Those file types either cannot safely use this same header style or are
   bundled into COHTML/UI output where extra comments are not always helpful.
 
-Preserved separately these shared licensed MIT files are intentionally skipped:
-  Utils/LocaleUtils.cs
-  Utils/LogUtils.cs
-  Utils/ShellOpen.cs
-  Utils/DebugLocaleScan.cs
 
 Scan behavior:
   Uses git ls-files when available, so ignored folders such as bin, obj,
@@ -81,14 +76,6 @@ SKIP_DIRS = {
     "generated",
     "node_modules",
     "packages",
-}
-
-# Shared library files keep their original MIT license.
-PRESERVE_LICENSE_FILES = {
-    "utils/localeutils.cs",
-    "utils/logutils.cs",
-    "utils/shellopen.cs",
-    "utils/debuglocalescan.cs",
 }
 
 SUPPORTED_SUFFIXES = {
@@ -143,10 +130,6 @@ def find_repo_root(script_path: Path) -> Path:
 def should_skip(path: Path) -> bool:
     """Return true for files this GPL-header tool must not edit."""
     if path.name.endswith(".g.cs"):
-        return True
-
-    relative_path = path.as_posix().lower()
-    if relative_path in PRESERVE_LICENSE_FILES:
         return True
 
     parts = {part.lower() for part in path.parts}
