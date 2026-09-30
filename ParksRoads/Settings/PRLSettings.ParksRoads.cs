@@ -1,4 +1,4 @@
-// <copyright file="Setting.ParksRoads.cs" company="River-Mochi">
+// <copyright file="PRLSettings.ParksRoads.cs" company="River-Mochi">
 // Copyright (c) 2026 River-Mochi. All rights reserved.
 // Licensed under the GNU General Public License v3.0 or later,
 // with the Cities: Skylines II Linking Exception.
@@ -6,7 +6,7 @@
 // This notice MUST be kept with copies or substantial portions of this code.
 // ================= </copyright> ======================
 
-// File: Settings/Setting.ParksRoads.cs
+// File: Settings/PRLSettings.ParksRoads.cs
 // Purpose: Parks/Roads settings (maintenance + road wear).
 
 namespace ParksRoads
@@ -15,7 +15,7 @@ namespace ParksRoads
     using Game.Settings;     // Settings UI attributes
     using Game.UI;           // Unit
 
-    public sealed partial class Setting
+    public partial class PRLSettings
     {
         // ------------------------
         // Parks-Roads (percent)

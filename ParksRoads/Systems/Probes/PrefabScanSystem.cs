@@ -98,7 +98,7 @@ namespace ParksRoads
                 }
                 else
                 {
-                    Setting s = Mod.Settings;
+                    PRLSettings s = Mod.Settings;
 
                     Append($"Park depot fleet size: {s.ParkMaintenanceDepotScalar:0.#}%");
                     Append($"Park vehicle work shift capacity: {s.ParkMaintenanceVehicleCapacityScalar:0.#}%");

@@ -38,7 +38,7 @@ namespace ParksRoads
         public static readonly ILog s_Log =
             LogManager.GetLogger(ModId).SetShowsErrorsInUI(false);
 
-        public static Setting? Settings;
+        public static PRLSettings? Settings;
 
         public void OnLoad(UpdateSystem updateSystem)
         {
@@ -51,7 +51,7 @@ namespace ParksRoads
             }
 
             // Settings first so locale labels can resolve.
-            Setting setting = new(this);
+            PRLSettings setting = new(this);
             Settings = setting;
 
             // Register ALL languages later when the split mod is stable.
@@ -73,7 +73,7 @@ namespace ParksRoads
 
             // Load settings (.coc) into the instance.
             // The default instance passed here provides defaults for missing fields.
-            AssetDatabase.global.LoadSettings(ModId, setting, new Setting(this));
+            AssetDatabase.global.LoadSettings(ModId, setting, new PRLSettings(this));
 
             // Repair missing/out-of-range/invalid values in-memory (no auto-save).
             setting.SanitizeAfterLoad();

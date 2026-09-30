@@ -1,4 +1,4 @@
-// <copyright file="Setting.cs" company="River-Mochi">
+// <copyright file="PRLSettings.cs" company="River-Mochi">
 // Copyright (c) 2026 River-Mochi. All rights reserved.
 // Licensed under the GNU General Public License v3.0 or later,
 // with the Cities: Skylines II Linking Exception.
@@ -6,11 +6,12 @@
 // This notice MUST be kept with copies or substantial portions of this code.
 // ================= </copyright> ======================
 
-// File: Settings/Setting.cs
+// File: Settings/PRLSettings.cs
 // Purpose: Options UI + saved settings for Parks, Roads & Lane Wear.
 
 namespace ParksRoads
 {
+    using System;                    // Exception
     using Colossal.IO.AssetDatabase; // FileLocation
     using Colossal.PSI.Environment;   // EnvPath
     using CS2Shared.RiverMochi;      // LogUtils
@@ -18,7 +19,6 @@ namespace ParksRoads
     using Game.Modding;              // IMod, ModSetting
     using Game.SceneFlow;            // GameManager
     using Game.Settings;             // Settings UI attributes
-    using System;                    // Exception
     using Unity.Entities;            // World
     using UnityEngine;               // Application.OpenURL
 
@@ -37,7 +37,7 @@ namespace ParksRoads
         AboutLinksGroup,
         DebugGroup
     )]
-    public sealed partial class Setting : ModSetting
+    public partial class PRLSettings : ModSetting
     {
         // Tab ids.
         public const string ParksRoadsTab = "Parks-Roads";
@@ -73,7 +73,7 @@ namespace ParksRoads
         private const string UrlDiscord =
             "https://discord.gg/HTav7ARPs2";
 
-        public Setting(IMod mod)
+        public PRLSettings(IMod mod)
             : base(mod)
         {
             // New install starts with defaults. LoadSettings overwrites when .coc exists.

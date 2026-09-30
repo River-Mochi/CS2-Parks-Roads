@@ -16,9 +16,9 @@ namespace ParksRoads
 
     public sealed class LocaleEN : IDictionarySource
     {
-        private readonly Setting m_Setting;
+        private readonly PRLSettings m_Setting;
 
-        public LocaleEN(Setting setting)
+        public LocaleEN(PRLSettings setting)
         {
             m_Setting = setting;
         }
@@ -43,116 +43,116 @@ namespace ParksRoads
                 { m_Setting.GetSettingsLocaleID(), title },
 
                 // Tabs
-                { m_Setting.GetOptionTabLocaleID(Setting.ParksRoadsTab), "Parks, Roads & Lane Wear" },
-                { m_Setting.GetOptionTabLocaleID(Setting.AboutTab),      "About" },
+                { m_Setting.GetOptionTabLocaleID(PRLSettings.ParksRoadsTab), "Parks, Roads & Lane Wear" },
+                { m_Setting.GetOptionTabLocaleID(PRLSettings.AboutTab),      "About" },
 
                 // Groups
-                { m_Setting.GetOptionGroupLocaleID(Setting.ParkMaintenanceGroup), "Park maintenance" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.RoadMaintenanceGroup), "Road repair / lane wear" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.ParkMaintenanceGroup), "Park maintenance" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.RoadMaintenanceGroup), "Road repair / lane wear" },
 
-                { m_Setting.GetOptionGroupLocaleID(Setting.AboutInfoGroup),  "Info" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.AboutLinksGroup), "Support links" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.DebugGroup),      "Status report / debug" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.AboutInfoGroup),  "Info" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.AboutLinksGroup), "Support links" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.DebugGroup),      "Status report / debug" },
 
                 // -------------------
                 // Park maintenance
                 // -------------------
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ParkMaintenanceDepotScalar)), "Depot fleet size" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ParkMaintenanceDepotScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceDepotScalar)), "Depot fleet size" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceDepotScalar)),
                     "Scales park maintenance depot **maximum vehicles**.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ParkMaintenanceVehicleCapacityScalar)), "Work shift capacity" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ParkMaintenanceVehicleCapacityScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleCapacityScalar)), "Work shift capacity" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleCapacityScalar)),
                     "Scales park maintenance **work shift capacity**.\n" +
                     "This is the total work a maintenance vehicle can do before returning to its building.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ParkMaintenanceVehicleRateScalar)), "Vehicle work rate" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ParkMaintenanceVehicleRateScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)), "Vehicle work rate" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)),
                     "Scales park maintenance **work rate**.\n" +
                     "Rate means how much work the vehicle does per simulation tick while stopped.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetParkMaintenanceToVanillaButton)), "Reset park maintenance" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetParkMaintenanceToVanillaButton)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetParkMaintenanceToVanillaButton)), "Reset park maintenance" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetParkMaintenanceToVanillaButton)),
                     "Reset park maintenance values back to **100%**." },
 
                 // -------------------
                 // Road repair / lane wear
                 // -------------------
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RoadMaintenanceDepotScalar)), "Depot fleet size" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.RoadMaintenanceDepotScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceDepotScalar)), "Depot fleet size" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadMaintenanceDepotScalar)),
                     "Scales road maintenance depot **maximum vehicles**.\n" +
                     "Higher values allow more road maintenance trucks.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RoadMaintenanceVehicleCapacityScalar)), "Work shift capacity" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.RoadMaintenanceVehicleCapacityScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleCapacityScalar)), "Work shift capacity" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleCapacityScalar)),
                     "Scales road maintenance **work shift capacity**.\n" +
                     "Higher values let trucks do more total repair work before returning to the depot.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RoadMaintenanceVehicleRateScalar)), "Repair rate" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.RoadMaintenanceVehicleRateScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)), "Repair rate" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)),
                     "Scales road maintenance **repair rate**.\n" +
                     "Rate means how much repair work the truck performs per simulation tick while stopped.\n" +
                     "**100%** = vanilla." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RoadWearScalar)), "Lane wear / road damage" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.RoadWearScalar)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Lane wear / road damage" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controls how quickly roads deteriorate from **time and traffic**.\n" +
                     "**10%** = much slower road wear.\n" +
                     "**100%** = vanilla.\n" +
                     "**500%** = faster road wear.\n" +
                     "This changes lane deterioration data for road wear / damage." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetRoadMaintenanceToVanillaButton)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)),
                     "Reset road repair, maintenance, and lane wear values back to **100%**." },
 
                 // -------------------
                 // About / debug
                 // -------------------
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ModNameDisplay)), "Mod" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ModNameDisplay)), "Display name of this mod." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ModNameDisplay)), "Mod" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ModNameDisplay)), "Display name of this mod." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ModVersionDisplay)), "Version" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.ModVersionDisplay)), "Current mod version." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ModVersionDisplay)), "Version" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ModVersionDisplay)), "Current mod version." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenParadoxMods)), "Paradox" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenParadoxMods)), "Open the author's Paradox Mods page." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Paradox" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Open the author's Paradox Mods page." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenDiscord)), "Discord" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenDiscord)), "Open the community Discord in a browser." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenDiscord)), "Discord" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenDiscord)), "Open the community Discord in a browser." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.RunPrefabScanButton)), "Scan report" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.RunPrefabScanButton)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RunPrefabScanButton)), "Scan report" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RunPrefabScanButton)),
                     "Creates a one-time report for Parks, Road Repair, and Lane Wear.\n" +
                     "Not needed for normal gameplay.\n" +
                     "File location: <ModsData/ParksRoads/ScanReport-ParksRoads.txt>\n" +
                     "Click once, wait for status to show Done, then use <Open report folder>." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PrefabScanStatus)), "Scan report status" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.PrefabScanStatus)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.PrefabScanStatus)), "Scan report status" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.PrefabScanStatus)),
                     "Shows scan state: Idle / Queued / Running / Done / Failed.\n" +
                     "Done shows duration and finish time." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.EnableDebugLogging)), "Verbose debug logs" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.EnableDebugLogging)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.EnableDebugLogging)), "Verbose debug logs" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.EnableDebugLogging)),
                     "Writes extra details to <ParksRoads.log> for troubleshooting.\n" +
                     "Disable for normal gameplay." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenLogButton)), "Open log folder" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenLogButton)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenLogButton)), "Open log folder" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenLogButton)),
                     "Open the logs folder.\n" +
                     "Then open <ParksRoads.log> with your text editor." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenReportButton)), "Open report folder" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenReportButton)),
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenReportButton)), "Open report folder" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenReportButton)),
                     "Open the report folder.\n" +
                     "Then open <ScanReport-ParksRoads.txt> with your text editor." },
 
