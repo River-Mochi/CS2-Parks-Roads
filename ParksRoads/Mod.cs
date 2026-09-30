@@ -1,3 +1,11 @@
+// <copyright file="Mod.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Mod.cs
 // Entrypoint: registers settings, locales, and the ECS systems.
 
@@ -17,8 +25,8 @@ namespace ParksRoads
     /// <summary>Mod entry point: registers settings, locales, and ECS systems.</summary>
     public sealed class Mod : IMod
     {
-        public const string ModName = "Parks + Road Repairs";
-        public const string ShortName = "Parks + Road Repairs";
+        public const string ModName = "Parks, Roads & Lane Wear";
+        public const string ShortName = "Parks, Roads & Lane Wear";
         public const string ModId = "ParksRoads";
         public const string ModTag = "[ParksRoads]";
 
@@ -34,7 +42,7 @@ namespace ParksRoads
 
         public void OnLoad(UpdateSystem updateSystem)
         {
-            LogUtils.Configure(ModId, s_Log);
+            ShellOpen.Configure(s_Log, ModId, ModTag);
 
             if (!s_BannerLogged)
             {
@@ -72,7 +80,7 @@ namespace ParksRoads
 
             setting.RegisterInOptionsUI();
 
-            // Parks + Road Repairs systems.
+            // Park maintenance, road maintenance, and lane wear systems.
             updateSystem.UpdateAfter<MaintenanceSystem>(SystemUpdatePhase.PrefabUpdate);
             updateSystem.UpdateAfter<LaneWearSystem>(SystemUpdatePhase.PrefabUpdate);
 

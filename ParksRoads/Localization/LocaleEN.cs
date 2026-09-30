@@ -1,3 +1,11 @@
+// <copyright file="LocaleEN.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Localization/LocaleEN.cs
 // English (en-US) strings for Options UI.
 
@@ -35,7 +43,7 @@ namespace ParksRoads
                 { m_Setting.GetSettingsLocaleID(), title },
 
                 // Tabs
-                { m_Setting.GetOptionTabLocaleID(Setting.ParksRoadsTab), "Parks + Road Repairs" },
+                { m_Setting.GetOptionTabLocaleID(Setting.ParksRoadsTab), "Parks, Roads & Lane Wear" },
                 { m_Setting.GetOptionTabLocaleID(Setting.AboutTab),      "About" },
 
                 // Groups

@@ -1,9 +1,18 @@
+// <copyright file="Setting.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Settings/Setting.cs
-// Purpose: Options UI + saved settings for Parks + Road Repairs.
+// Purpose: Options UI + saved settings for Parks, Roads & Lane Wear.
 
 namespace ParksRoads
 {
     using Colossal.IO.AssetDatabase; // FileLocation
+    using Colossal.PSI.Environment;   // EnvPath
     using CS2Shared.RiverMochi;      // LogUtils
     using Game;                      // IsGame
     using Game.Modding;              // IMod, ModSetting
@@ -228,18 +237,40 @@ namespace ParksRoads
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool OpenReportButton
         {
-            set => ShellOpen.OpenFolderSafe(ShellOpen.GetModsDataFolder(), "OpenReport");
+            set
+            {
+                if (value)
+                {
+                    string reportFolder = System.IO.Path.Combine(EnvPath.kUserDataPath, "ModsData", Mod.ModId);
+                    ShellOpen.OpenFolder(reportFolder, "OpenReport");
+                }
+            }
         }
 
+#if DEBUG
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool EnableDebugLogging { get; set; }
+#else
+        [SettingsUIHidden]
+        public bool EnableDebugLogging
+        {
+            get => false;
+            set { }
+        }
+#endif
 
         [SettingsUIButtonGroup(DebugGroup)]
         [SettingsUIButton]
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool OpenLogButton
         {
-            set => ShellOpen.OpenFolderSafe(ShellOpen.GetLogsFolder(), "OpenLog");
+            set
+            {
+                if (value)
+                {
+                    ShellOpen.OpenModLogOrLogsFolder();
+                }
+            }
         }
 
         // ------------------------

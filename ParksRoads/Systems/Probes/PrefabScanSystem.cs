@@ -1,3 +1,11 @@
+// <copyright file="PrefabScanSystem.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Systems/Probes/PrefabScanSystem.cs
 // Purpose: One-shot prefab scan triggered by Options UI button.
 // Output: Writes report to {UserData}/ModsData/ParksRoads/ScanReport-ParksRoads.txt
@@ -8,6 +16,7 @@
 namespace ParksRoads
 {
     using CS2Shared.RiverMochi;
+    using Colossal.PSI.Environment;
     using Game;
     using Game.Prefabs;
     using Game.SceneFlow;
@@ -353,11 +362,9 @@ namespace ParksRoads
             return value.ToString("0.###");
         }
 
-private static string GetReportPathLocal()
-{
-    return Path.Combine(
-        ShellOpen.GetModsDataFolder(),
-        "ScanReport-ParksRoads.txt");
-}
+        private static string GetReportPathLocal()
+        {
+            return Path.Combine(EnvPath.kUserDataPath, "ModsData", Mod.ModId, "ScanReport-ParksRoads.txt");
+        }
     }
 }
