@@ -6,7 +6,7 @@
 // This notice MUST be kept with copies or substantial portions of this code.
 // ================= </copyright> ======================
 
-// File: Utils/PrefabScanStatusText.cs
+// File: Helpers/PrefabScanStatusText.cs
 // Purpose: Builds the player-facing prefab scan status string from PrefabScanState data.
 // Notes:
 // - Uses localization keys with English fallbacks.

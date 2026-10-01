@@ -6,7 +6,7 @@
 // This notice MUST be kept with copies or substantial portions of this code.
 // ================= </copyright> ======================
 
-// File: Utils/PrefabComponentUtil.cs
+// File: Helpers/PrefabComponentUtil.cs
 // Purpose: Lookup of authoring components on prefab entities.
 // Notes:
 // - Centralizes PrefabSystem.TryGetPrefab + PrefabBase.TryGet.
