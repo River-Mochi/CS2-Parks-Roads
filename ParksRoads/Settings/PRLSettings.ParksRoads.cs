@@ -11,7 +11,6 @@
 
 namespace ParksRoads
 {
-    using CS2Shared.RiverMochi;
     using Game.Settings;     // Settings UI attributes
     using Game.UI;           // Unit
 
@@ -107,19 +106,6 @@ namespace ParksRoads
             RoadMaintenanceVehicleRateScalar = kVanillaPercent;
 
             RoadWearScalar = kVanillaPercent;
-        }
-
-        partial void RepairAndClamp_ParksRoads()
-        {
-            ParkMaintenanceDepotScalar = ClampPercentOrVanilla(ParkMaintenanceDepotScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            ParkMaintenanceVehicleCapacityScalar = ClampPercentOrVanilla(ParkMaintenanceVehicleCapacityScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            ParkMaintenanceVehicleRateScalar = ClampPercentOrVanilla(ParkMaintenanceVehicleRateScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-
-            RoadMaintenanceDepotScalar = ClampPercentOrVanilla(RoadMaintenanceDepotScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            RoadMaintenanceVehicleCapacityScalar = ClampPercentOrVanilla(RoadMaintenanceVehicleCapacityScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            RoadMaintenanceVehicleRateScalar = ClampPercentOrVanilla(RoadMaintenanceVehicleRateScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-
-            RoadWearScalar = ClampPercentOrVanilla(RoadWearScalar, RoadWearMinPercent, RoadWearMaxPercent, kVanillaPercent);
         }
     }
 }

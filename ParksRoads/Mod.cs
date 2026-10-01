@@ -7,22 +7,20 @@
 // ================= </copyright> ======================
 
 // File: Mod.cs
-// Entrypoint: registers settings, locales, and the ECS systems.
+// Entrypoint: registers settings, locales, and ECS systems.
 
 namespace ParksRoads
 {
-    using Colossal;                  // IDictionarySource
+    using System;                    // Exception
+    using System.Reflection;         // Assembly
     using Colossal.IO.AssetDatabase; // AssetDatabase.LoadSettings
     using Colossal.Localization;     // LocalizationManager
     using Colossal.Logging;          // ILog
-    using CS2Shared.RiverMochi;      // LogUtils
-    using Game;                      // UpdateSystem, GameMode, SystemUpdatePhase
+    using CS2Shared.RiverMochi;      // LogUtils, ShellOpen
+    using Game;                      // UpdateSystem, SystemUpdatePhase
     using Game.Modding;              // IMod
     using Game.SceneFlow;            // GameManager
-    using System;                    // Exception
-    using System.Reflection;         // Assembly
 
-    /// <summary>Mod entry point: registers settings, locales, and ECS systems.</summary>
     public sealed class Mod : IMod
     {
         public const string ModName = "Parks, Roads & Lane Wear";
@@ -58,33 +56,57 @@ namespace ParksRoads
                 LogUtils.Info(s_Log, () => $"{ModName} {ModTag} v{ModVersion} [{kBuildType}] OnLoad");
             }
 
-            // Settings first so locale labels can resolve.
+            // Locales need the same settings instance used by Options.
             PRLSettings setting = new(this);
             Settings = setting;
 
-            AddLocaleSource("en-US", new LocaleEN(setting));
+            try
+            {
+                LocalizationManager? localizationManager = GameManager.instance?.localizationManager;
 
-            // Load settings (.coc) into the instance.
-            // The default instance passed here provides defaults for missing fields.
+                if (localizationManager == null)
+                {
+                    LogUtils.Warn(s_Log, () => $"{ModTag} LocalizationManager is null; locale sources were not registered.");
+                }
+                else
+                {
+                    localizationManager.AddSource("en-US", new LocaleEN(setting));
+                    localizationManager.AddSource("fr-FR", new LocaleFR(setting));
+                    localizationManager.AddSource("es-ES", new LocaleES(setting));
+                    localizationManager.AddSource("de-DE", new LocaleDE(setting));
+                    localizationManager.AddSource("it-IT", new LocaleIT(setting));
+                    localizationManager.AddSource("ja-JP", new LocaleJA(setting));
+                    localizationManager.AddSource("ko-KR", new LocaleKO(setting));
+                    localizationManager.AddSource("pl-PL", new LocalePL(setting));
+                    localizationManager.AddSource("pt-BR", new LocalePT_BR(setting));
+                    localizationManager.AddSource("zh-HANS", new LocaleZH_CN(setting));
+                    localizationManager.AddSource("zh-HANT", new LocaleZH_HANT(setting));
+
+                    // These locales are not officially supported by the game,
+                    // but work with alternate language mods.
+                    localizationManager.AddSource("pt-PT", new LocalePT_PT(setting));
+                    localizationManager.AddSource("tr-TR", new LocaleTR(setting));
+                    localizationManager.AddSource("vi-VN", new LocaleVI(setting));
+                    localizationManager.AddSource("nl-NL", new LocaleNL(setting));
+                }
+            }
+            catch (Exception ex)
+            {
+                LogUtils.Warn(s_Log, () => $"{ModTag} Localization registration failed: {ex.GetType().Name}: {ex.Message}");
+            }
+
             AssetDatabase.global.LoadSettings(ModId, setting, new PRLSettings(this));
-
-            // Repair missing/out-of-range/invalid values in-memory (no auto-save).
-            setting.SanitizeAfterLoad();
-
             setting.RegisterInOptionsUI();
 
-            // Park maintenance, road maintenance, and lane wear systems.
             updateSystem.UpdateAfter<MaintenanceSystem>(SystemUpdatePhase.PrefabUpdate);
             updateSystem.UpdateAfter<LaneWearSystem>(SystemUpdatePhase.PrefabUpdate);
 
-            // Prefab scan: must work even while Options UI is open.
+            // Prefab scan must work while the Options UI is open.
             updateSystem.UpdateAt<PrefabScanSystem>(SystemUpdatePhase.PrefabUpdate);
 
 #if DEBUG
-            // Debug probe: logs LaneCondition.m_Wear deltas/runtime lane wear info.
             updateSystem.UpdateAt<LaneWearProbeSystem>(SystemUpdatePhase.GameSimulation);
 #endif
-
         }
 
         public void OnDispose()
@@ -94,53 +116,6 @@ namespace ParksRoads
                 Settings.UnregisterInOptionsUI();
                 Settings = null;
             }
-        }
-
-        //---------------
-        // HELPERS
-        //---------------
-
-        private static void AddLocaleSource(string localeId, IDictionarySource source)
-        {
-            if (string.IsNullOrEmpty(localeId))
-            {
-                return;
-            }
-
-            LocalizationManager? lm = GameManager.instance?.localizationManager;
-            if (lm == null)
-            {
-                LogUtils.Warn(s_Log, () => $"AddLocaleSource: No LocalizationManager; cannot add source for '{localeId}'.");
-                return;
-            }
-
-            try
-            {
-                lm.AddSource(localeId, source);
-            }
-            catch (Exception ex)
-            {
-                LogUtils.Warn(s_Log, () => $"AddLocaleSource: AddSource for '{localeId}' failed: {ex.GetType().Name}: {ex.Message}");
-            }
-        }
-
-        internal static string L(string id, string fallback)
-        {
-            try
-            {
-                LocalizationManager? lm = GameManager.instance?.localizationManager;
-                if (lm != null &&
-                    lm.activeDictionary != null &&
-                    lm.activeDictionary.TryGetValue(id, out string result))
-                {
-                    return result;
-                }
-            }
-            catch
-            {
-            }
-
-            return fallback;
         }
     }
 }
