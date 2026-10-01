@@ -1,8 +1,16 @@
+// <copyright file="LaneWearSystem.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Systems/LaneWearSystem.cs
 // Purpose: Apply RoadWearScalar (percent) to BOTH LaneDeteriorationData.m_TimeFactor and m_TrafficFactor (prefab lane deterioration settings).
 // Notes:
 // - Run-once system: enabled on city load or when settings Apply() enables it.
-// - Caches original m_TimeFactor + m_TrafficFactor per prefab entity so changes do not stack.
+// - Reads authoring factors when available and caches them per prefab entity so changes do not stack.
 // - Affects how quickly lanes accumulate deterioration from BOTH time and traffic.
 
 namespace ParksRoads
@@ -12,7 +20,6 @@ namespace ParksRoads
     using Game;
     using Game.Prefabs;
     using Game.SceneFlow;
-    using System;
     using System.Collections.Generic;
     using Unity.Entities;
 
@@ -26,10 +33,13 @@ namespace ParksRoads
 
         // Base (vanilla/current-session-original) factors per prefab entity (LaneDeteriorationData).
         private readonly Dictionary<Entity, BaseFactors> m_Base = new Dictionary<Entity, BaseFactors>();
+        private PrefabSystem m_PrefabSystem = null!;
 
         protected override void OnCreate()
         {
             base.OnCreate();
+
+            m_PrefabSystem = World.GetOrCreateSystemManaged<PrefabSystem>();
 
             EntityQuery q = SystemAPI.QueryBuilder()
                 .WithAll<PrefabData, LaneDeteriorationData>()
@@ -37,6 +47,12 @@ namespace ParksRoads
 
             RequireForUpdate(q);
 
+            Enabled = false;
+        }
+
+        protected override void OnGamePreload(Purpose purpose, GameMode mode)
+        {
+            base.OnGamePreload(purpose, mode);
             Enabled = false;
         }
 
@@ -77,8 +93,8 @@ bool verbose = Mod.Settings.EnableDebugLogging;
 #endif
 
             float percent = Mod.Settings.RoadWearScalar; // 100 = vanilla
-            if (percent < Setting.RoadWearMinPercent) percent = Setting.RoadWearMinPercent;
-            if (percent > Setting.RoadWearMaxPercent) percent = Setting.RoadWearMaxPercent;
+            if (percent < PRLSettings.RoadWearMinPercent) percent = PRLSettings.RoadWearMinPercent;
+            if (percent > PRLSettings.RoadWearMaxPercent) percent = PRLSettings.RoadWearMaxPercent;
 
             float scalar = percent / 100f;
 
@@ -96,10 +112,20 @@ bool verbose = Mod.Settings.EnableDebugLogging;
 
                 if (!m_Base.TryGetValue(e, out BaseFactors baseF))
                 {
+                    float baseTime = lane.m_TimeFactor;
+                    float baseTraffic = lane.m_TrafficFactor;
+
+                    if (m_PrefabSystem.TryGetPrefab(e, out PrefabBase prefabBase) &&
+                        prefabBase.TryGet(out LaneDeterioration author))
+                    {
+                        baseTime = author.m_TimeDeterioration;
+                        baseTraffic = author.m_TrafficDeterioration;
+                    }
+
                     baseF = new BaseFactors
                     {
-                        Time = lane.m_TimeFactor,
-                        Traffic = lane.m_TrafficFactor,
+                        Time = baseTime,
+                        Traffic = baseTraffic,
                     };
                     m_Base[e] = baseF;
                 }
@@ -107,19 +133,15 @@ bool verbose = Mod.Settings.EnableDebugLogging;
                 float desiredTime = baseF.Time * scalar;
                 float desiredTraffic = baseF.Traffic * scalar;
 
-                // Keep tiny positives so “0” doesn't effectively freeze wear forever.
-                if (desiredTime < 0.0001f) desiredTime = 0.0001f;
-                if (desiredTraffic < 0.0001f) desiredTraffic = 0.0001f;
-
                 bool any = false;
 
-                if (Math.Abs(lane.m_TimeFactor - desiredTime) > 0.00001f)
+                if (lane.m_TimeFactor != desiredTime)
                 {
                     lane.m_TimeFactor = desiredTime;
                     any = true;
                 }
 
-                if (Math.Abs(lane.m_TrafficFactor - desiredTraffic) > 0.00001f)
+                if (lane.m_TrafficFactor != desiredTraffic)
                 {
                     lane.m_TrafficFactor = desiredTraffic;
                     any = true;

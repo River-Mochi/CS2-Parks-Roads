@@ -1,5 +1,13 @@
-﻿// File: Utils/PrefabComponentUtil.cs
-// Purpose: Prefab components lookup (TransportDepot, PublicTransport, etc.).
+// <copyright file="PrefabComponentUtil.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
+// File: Helpers/PrefabComponentUtil.cs
+// Purpose: Lookup of authoring components on prefab entities.
 // Notes:
 // - Centralizes PrefabSystem.TryGetPrefab + PrefabBase.TryGet.
 // - PrefabBase.TryGet<T> requires T : ComponentBase.

@@ -1,49 +1,27 @@
-﻿<Publish>
+<Publish>
 	<!--Id must be set in order to update existing mod. it is not required for publishing mod for the first time-->
 	<ModId Value="" />
 	<!--Name of the mod to display to players-->
-	<DisplayName Value="Parks + Road Repairs" />
+	<DisplayName Value="Parks, Roads &amp; Lane Wear" />
 	<!--Short description of the mod-->
-	<ShortDescription Value="Parks and Road Repairs, and adjust all Road wear damage rates." />
+	<ShortDescription Value="Adjust park maintenance, road repairs, and lane wear." />
 	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 	<!--LongDescription Value="This is a long description" /-->
-	<LongDescription>
-### Parks and Road Repairs 
+<LongDescription>
+### Parks, Roads &amp; Lane Wear
 
+Adjust each feature independently. Every slider starts at 100%, the game default.
 
+- Park maintenance: depot fleet size, vehicle work capacity, and work rate.
+- Road maintenance: depot fleet size, vehicle work capacity, and repair rate.
+- Lane wear: change how quickly road lanes deteriorate from time and traffic.
 
-Everything is OPTIONAL - you choose!
+Settings can be changed while a city is loaded. The About tab provides a one-time report for checking the current prefab values.
 
-- Parks/Roads Maintenance
-
-
-- **Parks + Roads Repairs**: fleet size, work shift + rate
-- Road wear (beta): scale speed roads accumulate damage over time
-
-
-- *Adjust Sliders* at any time, no restart needed; supports switching cities.
-- No Harmony or Reflection used; more compatible - less likely to break on patch days.
-- Safe to remove any time (use Reset buttons to return to vanilla game default values).
-
+This is a separate mod. All Transit + Trucks is not required.
 
 ### Support and feedback
-- If the mod helps you, give it a Like, it's free + easy :)
-
-- Feedback on: Github, Discord links on the right.
-
-### Credits
-- River-Mochi: author
-- yenyang: code review and testing.
-- Necko1996: testing
-
-
-### 11 Languages
-
-- English, Français, Deutsch, Español, Italiano, Polski Polish, Português Brazilian
-- 한국어, 日本語, 简体中文 (Simplified Chinese), 繁體中文 Traditional Chinese
-
-
-
+Use the GitHub and Discord links on this page.
 </LongDescription>
 	<!--Thumbnail-->
 	<Thumbnail Value="Properties/Thumbnail-PwP03.jpg" />
@@ -57,19 +35,18 @@ Everything is OPTIONAL - you choose!
 	<!--Tag, can be set multiple times-->
 	<Tag Value="Code Mod" />
 	<!--Link to the forum post where the mod can be discussed-->
-	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/public-works-plus.1910233/" />
 	<!--Version of the mod-->
-	<ModVersion Value="2.1.1" />
+	<ModVersion Value="0.5.0" />
 	<!--Recommended version of the base game to use the mod-->
-	<GameVersion Value="1.5.*" />
+	<GameVersion Value="1.6.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
 	<!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
-- added logging utils, improved logging reliability.
-- no gameplay changes, just internal.
+- First release of the separate Parks, Roads &amp; Lane Wear mod.
+- Park maintenance, road maintenance, and lane wear controls are independent of All Transit + Trucks.
 </ChangeLog>
 	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
 <ExternalLink Type="discord" Url="https://discord.gg/HTav7ARPs2" />
-<ExternalLink Type="github" Url="https://github.com/River-Mochi/ParksRoads" />
+<ExternalLink Type="github" Url="https://github.com/River-Mochi/CS2-Parks-Roads" />
 </Publish>

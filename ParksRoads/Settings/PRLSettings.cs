@@ -1,23 +1,33 @@
-// File: Settings/Setting.cs
-// Purpose: Options UI + saved settings for Parks + Road Repairs.
+// <copyright file="PRLSettings.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
+// File: Settings/PRLSettings.cs
+// Purpose: Options UI + saved settings for Parks, Roads & Lane Wear.
 
 namespace ParksRoads
 {
+    using System;                    // Exception
     using Colossal.IO.AssetDatabase; // FileLocation
+    using Colossal.PSI.Environment;   // EnvPath
     using CS2Shared.RiverMochi;      // LogUtils
     using Game;                      // IsGame
     using Game.Modding;              // IMod, ModSetting
     using Game.SceneFlow;            // GameManager
     using Game.Settings;             // Settings UI attributes
-    using System;                    // Exception
     using Unity.Entities;            // World
     using UnityEngine;               // Application.OpenURL
 
     [FileLocation("ModsSettings/ParksRoads/ParksRoads")]
-    [SettingsUITabOrder(ParksRoadsTab, AboutTab)]
+    [SettingsUITabOrder(ActionsTab, AboutTab)]
     [SettingsUIGroupOrder(
         ParkMaintenanceGroup,
         RoadMaintenanceGroup,
+        LaneWearGroup,
         AboutInfoGroup,
         AboutLinksGroup,
         DebugGroup
@@ -25,18 +35,20 @@ namespace ParksRoads
     [SettingsUIShowGroupName(
         ParkMaintenanceGroup,
         RoadMaintenanceGroup,
+        LaneWearGroup,
         AboutLinksGroup,
         DebugGroup
     )]
-    public sealed partial class Setting : ModSetting
+    public partial class PRLSettings : ModSetting
     {
         // Tab ids.
-        public const string ParksRoadsTab = "Parks-Roads";
+        public const string ActionsTab = "Actions";
         public const string AboutTab = "About";
 
         // Group ids.
         public const string ParkMaintenanceGroup = "ParkMaintenance";
         public const string RoadMaintenanceGroup = "RoadMaintenance";
+        public const string LaneWearGroup = "LaneWear";
 
         public const string AboutInfoGroup = "AboutInfo";
         public const string AboutLinksGroup = "AboutLinks";
@@ -53,10 +65,10 @@ namespace ParksRoads
         public const float MaintenanceMaxPercent = 500f;
         public const float MaintenanceStepPercent = 10f;
 
-        // Road wear speed: percent (10%..500% = 0.1x..5x).
-        public const float RoadWearMinPercent = 10f;
+        // Road wear speed: percent (5%..500% = 0.05x..5x).
+        public const float RoadWearMinPercent = 5f;
         public const float RoadWearMaxPercent = 500f;
-        public const float RoadWearStepPercent = 10f;
+        public const float RoadWearStepPercent = 5f;
 
         private const string UrlParadox =
             "https://mods.paradoxplaza.com/authors/River-mochi/cities_skylines_2?games=cities_skylines_2&orderBy=desc&sortBy=best&time=alltime";
@@ -64,7 +76,7 @@ namespace ParksRoads
         private const string UrlDiscord =
             "https://discord.gg/HTav7ARPs2";
 
-        public Setting(IMod mod)
+        public PRLSettings(IMod mod)
             : base(mod)
         {
             // New install starts with defaults. LoadSettings overwrites when .coc exists.
@@ -72,7 +84,7 @@ namespace ParksRoads
         }
 
         /// <summary>
-        /// Repair missing/out-of-range/legacy values after LoadSettings.
+        /// Repair missing or out-of-range values after LoadSettings.
         /// No auto-save performed.
         /// </summary>
         public void SanitizeAfterLoad()
@@ -135,7 +147,7 @@ namespace ParksRoads
         public string ModNameDisplay => $"{Mod.ModName} {Mod.ModTag}";
 
         [SettingsUISection(AboutTab, AboutInfoGroup)]
-        public string ModVersionDisplay => Mod.ModVersion;
+        public string ModVersionDisplay => $"{Mod.ModVersion} {Mod.BuildDisplayName}";
 
         [SettingsUIButtonGroup(AboutLinksGroup)]
         [SettingsUIButton]
@@ -228,18 +240,40 @@ namespace ParksRoads
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool OpenReportButton
         {
-            set => ShellOpen.OpenFolderSafe(ShellOpen.GetModsDataFolder(), "OpenReport");
+            set
+            {
+                if (value)
+                {
+                    string reportFolder = System.IO.Path.Combine(EnvPath.kUserDataPath, "ModsData", Mod.ModId);
+                    ShellOpen.OpenFolder(reportFolder, "OpenReport");
+                }
+            }
         }
 
+#if DEBUG
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool EnableDebugLogging { get; set; }
+#else
+        [SettingsUIHidden]
+        public bool EnableDebugLogging
+        {
+            get => false;
+            set { }
+        }
+#endif
 
         [SettingsUIButtonGroup(DebugGroup)]
         [SettingsUIButton]
         [SettingsUISection(AboutTab, DebugGroup)]
         public bool OpenLogButton
         {
-            set => ShellOpen.OpenFolderSafe(ShellOpen.GetLogsFolder(), "OpenLog");
+            set
+            {
+                if (value)
+                {
+                    ShellOpen.OpenModLogOrLogsFolder();
+                }
+            }
         }
 
         // ------------------------

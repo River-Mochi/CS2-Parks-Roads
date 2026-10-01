@@ -1,4 +1,12 @@
-// File: Settings/Setting.ParksRoads.cs
+// <copyright file="PRLSettings.ParksRoads.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
+// File: Settings/PRLSettings.ParksRoads.cs
 // Purpose: Parks/Roads settings (maintenance + road wear).
 
 namespace ParksRoads
@@ -7,27 +15,27 @@ namespace ParksRoads
     using Game.Settings;     // Settings UI attributes
     using Game.UI;           // Unit
 
-    public sealed partial class Setting
+    public partial class PRLSettings
     {
         // ------------------------
         // Parks-Roads (percent)
         // ------------------------
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceDepotScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceVehicleCapacityScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceVehicleRateScalar { get; set; }
 
         [SettingsUIButtonGroup(ParkMaintenanceGroup)]
         [SettingsUIButton]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public bool ResetParkMaintenanceToVanillaButton
         {
             set
@@ -43,24 +51,20 @@ namespace ParksRoads
         }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceDepotScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceVehicleCapacityScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceVehicleRateScalar { get; set; }
-
-        [SettingsUISlider(min = RoadWearMinPercent, max = RoadWearMaxPercent, step = RoadWearStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
-        public float RoadWearScalar { get; set; }
 
         [SettingsUIButtonGroup(RoadMaintenanceGroup)]
         [SettingsUIButton]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public bool ResetRoadMaintenanceToVanillaButton
         {
             set
@@ -70,8 +74,24 @@ namespace ParksRoads
                 RoadMaintenanceDepotScalar = kVanillaPercent;
                 RoadMaintenanceVehicleCapacityScalar = kVanillaPercent;
                 RoadMaintenanceVehicleRateScalar = kVanillaPercent;
-                RoadWearScalar = kVanillaPercent;
+                ApplyAndSave();
+            }
+        }
 
+        [SettingsUISlider(min = RoadWearMinPercent, max = RoadWearMaxPercent, step = RoadWearStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
+        [SettingsUISection(ActionsTab, LaneWearGroup)]
+        public float RoadWearScalar { get; set; }
+
+        [SettingsUIButtonGroup(LaneWearGroup)]
+        [SettingsUIButton]
+        [SettingsUISection(ActionsTab, LaneWearGroup)]
+        public bool ResetLaneWearToVanillaButton
+        {
+            set
+            {
+                if (!value) return;
+
+                RoadWearScalar = kVanillaPercent;
                 ApplyAndSave();
             }
         }

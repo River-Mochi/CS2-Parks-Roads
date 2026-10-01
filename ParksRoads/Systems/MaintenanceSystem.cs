@@ -1,3 +1,11 @@
+// <copyright file="MaintenanceSystem.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Systems/MaintenanceSystem.cs
 // Purpose: Apply park/road maintenance vehicle and depot multipliers based on current settings.
 // Notes:
@@ -44,6 +52,12 @@ namespace ParksRoads
             Enabled = false;
         }
 
+        protected override void OnGamePreload(Purpose purpose, GameMode mode)
+        {
+            base.OnGamePreload(purpose, mode);
+            Enabled = false;
+        }
+
         protected override void OnGameLoadingComplete(Purpose purpose, GameMode mode)
         {
             base.OnGameLoadingComplete(purpose, mode);
@@ -81,7 +95,7 @@ namespace ParksRoads
                 return;
             }
 
-            Setting settings = Mod.Settings;
+            PRLSettings settings = Mod.Settings;
 
 #if DEBUG
 bool verbose = settings.EnableDebugLogging;
@@ -93,33 +107,33 @@ bool verbose = settings.EnableDebugLogging;
             // Scalars computed once.
             float roadDepotScalar = ScalarMath.PercentToScalarClamped(
                 settings.RoadMaintenanceDepotScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             float parkDepotScalar = ScalarMath.PercentToScalarClamped(
                 settings.ParkMaintenanceDepotScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             float roadCapScalar = ScalarMath.PercentToScalarClamped(
                 settings.RoadMaintenanceVehicleCapacityScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             float roadRateScalar = ScalarMath.PercentToScalarClamped(
                 settings.RoadMaintenanceVehicleRateScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             float parkCapScalar = ScalarMath.PercentToScalarClamped(
                 settings.ParkMaintenanceVehicleCapacityScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             float parkRateScalar = ScalarMath.PercentToScalarClamped(
                 settings.ParkMaintenanceVehicleRateScalar,
-                Setting.MaintenanceMinPercent,
-                Setting.MaintenanceMaxPercent);
+                PRLSettings.MaintenanceMinPercent,
+                PRLSettings.MaintenanceMaxPercent);
 
             // ------------------------------------------
             // Maintenance depots: max vehicles (prefabs)

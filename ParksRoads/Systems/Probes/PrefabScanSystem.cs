@@ -1,13 +1,22 @@
+// <copyright file="PrefabScanSystem.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Systems/Probes/PrefabScanSystem.cs
 // Purpose: One-shot prefab scan triggered by Options UI button.
 // Output: Writes report to {UserData}/ModsData/ParksRoads/ScanReport-ParksRoads.txt
 // Notes:
 // - Runs only when requested.
-// - First split-mod pass: Parks, road maintenance, lane wear only.
+// - Covers park maintenance, road maintenance, and lane wear.
 
 namespace ParksRoads
 {
     using CS2Shared.RiverMochi;
+    using Colossal.PSI.Environment;
     using Game;
     using Game.Prefabs;
     using Game.SceneFlow;
@@ -89,7 +98,7 @@ namespace ParksRoads
                 }
                 else
                 {
-                    Setting s = Mod.Settings;
+                    PRLSettings s = Mod.Settings;
 
                     Append($"Park depot fleet size: {s.ParkMaintenanceDepotScalar:0.#}%");
                     Append($"Park vehicle work shift capacity: {s.ParkMaintenanceVehicleCapacityScalar:0.#}%");
@@ -305,11 +314,6 @@ namespace ParksRoads
                 PrefabScanState.MarkDone(sw.Elapsed, reportPath);
 
                 LogUtils.Info(Mod.s_Log, () => $"{Mod.ModTag} Prefab scan done in {sw.Elapsed.TotalSeconds:0.0}s. Report: {reportPath}");
-                LogUtils.Info(
-                    Mod.s_Log,
-                    () =>
-                        $"{Mod.ModTag} PrefabScan counts: " +
-                        $"MaintVehicles={maintenanceVehicleTotal}, MaintDepots={maintenanceDepotTotal}, LaneWearPrefabs={laneTotal}");
             }
             catch (Exception ex)
             {
@@ -353,11 +357,9 @@ namespace ParksRoads
             return value.ToString("0.###");
         }
 
-private static string GetReportPathLocal()
-{
-    return Path.Combine(
-        ShellOpen.GetModsDataFolder(),
-        "ScanReport-ParksRoads.txt");
-}
+        private static string GetReportPathLocal()
+        {
+            return Path.Combine(EnvPath.kUserDataPath, "ModsData", Mod.ModId, "ScanReport-ParksRoads.txt");
+        }
     }
 }

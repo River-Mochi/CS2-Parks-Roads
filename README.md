@@ -1,4 +1,4 @@
-## Parks & Roads
+## Parks, Roads & Lane Wear
 - **Park maintenance**
   - Depot fleet size
   - Vehicle maintenance capacity
@@ -20,10 +20,10 @@
 ## Notes
 - Changes apply while a city is loaded; no restart needed.
 - Safe to remove any time (use reset buttons if you want to return to vanilla first).
-- This mod does **not** use Harmony for these delivery-capacity and dispatch improvements.
+- This mod changes park maintenance, road maintenance, and lane wear without Harmony patches.
 
-## Languages (11)
-English, Français, Deutsch, Español, Italiano, 한국어, 日本語, 简体中文, 繁體中文, Português (Brazil), Polski
+## Languages
+English. Other translations can be added after the gameplay and English UI are validated.
 
 ## Credits
 - River-Mochi — author/maintainer, localization
@@ -36,4 +36,4 @@ English, Français, Deutsch, Español, Italiano, 한국어, 日本語, 简体中
 - Support Discord: https://discord.gg/HTav7ARPs2
 
 ## License
-MIT
+GPL-3.0-or-later with the Cities: Skylines II Linking Exception.

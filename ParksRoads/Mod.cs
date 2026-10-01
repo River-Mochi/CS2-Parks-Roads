@@ -1,3 +1,11 @@
+// <copyright file="Mod.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Mod.cs
 // Entrypoint: registers settings, locales, and the ECS systems.
 
@@ -17,10 +25,18 @@ namespace ParksRoads
     /// <summary>Mod entry point: registers settings, locales, and ECS systems.</summary>
     public sealed class Mod : IMod
     {
-        public const string ModName = "Parks + Road Repairs";
-        public const string ShortName = "Parks + Road Repairs";
+        public const string ModName = "Parks, Roads & Lane Wear";
+        public const string ShortName = "Parks, Roads & Lane Wear";
         public const string ModId = "ParksRoads";
         public const string ModTag = "[ParksRoads]";
+
+#if DEBUG
+        private const string kBuildType = "DEBUG";
+#else
+        private const string kBuildType = "RELEASE";
+#endif
+
+        public static string BuildDisplayName => kBuildType == "RELEASE" ? "Release" : "Debug";
 
         public static readonly string ModVersion =
             Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
@@ -30,49 +46,34 @@ namespace ParksRoads
         public static readonly ILog s_Log =
             LogManager.GetLogger(ModId).SetShowsErrorsInUI(false);
 
-        public static Setting? Settings;
+        public static PRLSettings? Settings;
 
         public void OnLoad(UpdateSystem updateSystem)
         {
-            LogUtils.Configure(ModId, s_Log);
+            ShellOpen.Configure(s_Log, ModId, ModTag);
 
             if (!s_BannerLogged)
             {
                 s_BannerLogged = true;
-                LogUtils.Info(s_Log, () => $"{ModName} v{ModVersion} OnLoad");
+                LogUtils.Info(s_Log, () => $"{ModName} {ModTag} v{ModVersion} [{kBuildType}] OnLoad");
             }
 
             // Settings first so locale labels can resolve.
-            Setting setting = new(this);
+            PRLSettings setting = new(this);
             Settings = setting;
 
-            // Register ALL languages later when the split mod is stable.
             AddLocaleSource("en-US", new LocaleEN(setting));
-            // AddLocaleSource("fr-FR", new LocaleFR(setting));
-            // AddLocaleSource("es-ES", new LocaleES(setting));
-            // AddLocaleSource("de-DE", new LocaleDE(setting));
-            // AddLocaleSource("it-IT", new LocaleIT(setting));
-            // AddLocaleSource("ja-JP", new LocaleJA(setting));
-            // AddLocaleSource("ko-KR", new LocaleKO(setting));
-            // AddLocaleSource("pl-PL", new LocalePL(setting));
-            // AddLocaleSource("pt-BR", new LocalePT_BR(setting));
-            // AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));    // Simplified Chinese
-            // AddLocaleSource("zh-HANT", new LocaleZH_HANT(setting));  // Traditional Chinese
-            // AddLocaleSource("th-TH", new LocaleTH(setting));         // Thai
-            // AddLocaleSource("vi-VN", new LocaleVI(setting));         // Vietnamese
-            // AddLocaleSource("tr-TR", new LocaleTR(setting));         // Turkish
-            // AddLocaleSource("pt-PT", new LocalePT_PT(setting));      // European Portuguese
 
             // Load settings (.coc) into the instance.
             // The default instance passed here provides defaults for missing fields.
-            AssetDatabase.global.LoadSettings(ModId, setting, new Setting(this));
+            AssetDatabase.global.LoadSettings(ModId, setting, new PRLSettings(this));
 
             // Repair missing/out-of-range/invalid values in-memory (no auto-save).
             setting.SanitizeAfterLoad();
 
             setting.RegisterInOptionsUI();
 
-            // Parks + Road Repairs systems.
+            // Park maintenance, road maintenance, and lane wear systems.
             updateSystem.UpdateAfter<MaintenanceSystem>(SystemUpdatePhase.PrefabUpdate);
             updateSystem.UpdateAfter<LaneWearSystem>(SystemUpdatePhase.PrefabUpdate);
 
@@ -84,13 +85,10 @@ namespace ParksRoads
             updateSystem.UpdateAt<LaneWearProbeSystem>(SystemUpdatePhase.GameSimulation);
 #endif
 
-            LogUtils.Info(s_Log, () => $"{ModId}.{nameof(OnLoad)} Completed.");
         }
 
         public void OnDispose()
         {
-            LogUtils.Info(s_Log, () => "OnDispose");
-
             if (Settings != null)
             {
                 Settings.UnregisterInOptionsUI();

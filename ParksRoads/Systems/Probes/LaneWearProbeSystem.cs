@@ -1,3 +1,11 @@
+// <copyright file="LaneWearProbeSystem.cs" company="River-Mochi">
+// Copyright (c) 2026 River-Mochi. All rights reserved.
+// Licensed under the GNU General Public License v3.0 or later,
+// with the Cities: Skylines II Linking Exception.
+// See LICENSE and LICENSE-EXCEPTION in the project root.
+// This notice MUST be kept with copies or substantial portions of this code.
+// ================= </copyright> ======================
+
 // File: Systems/Probes/LaneWearProbeSystem.cs
 // Purpose: Verbose probe for LaneCondition.m_Wear to validate lane wear slider behavior.
 // Notes:
@@ -8,6 +16,7 @@
 
 namespace ParksRoads
 {
+    using Colossal.Serialization.Entities;
     using CS2Shared.RiverMochi;
     using Game;
     using Game.Net;
@@ -64,6 +73,7 @@ namespace ParksRoads
             // UpdateFrame is a shared component; filtering is done via SetSharedComponentFilter.
             m_LanesByFrameQuery = SystemAPI.QueryBuilder()
                 .WithAll<LaneCondition, PrefabRef, UpdateFrame>()
+                .WithNone<global::Game.Common.Deleted, global::Game.Tools.Temp>()
                 .Build();
 
             RequireForUpdate(m_LanesByFrameQuery);
@@ -76,6 +86,19 @@ namespace ParksRoads
             m_HasLast = new bool[totalSlots];
 
             for (int i = 0; i < totalSlots; i++)
+            {
+                m_Samples[i] = Entity.Null;
+                m_LastWear[i] = 0f;
+                m_LastWearQ64[i] = 0;
+                m_HasLast[i] = false;
+            }
+        }
+
+        protected override void OnGamePreload(Purpose purpose, GameMode mode)
+        {
+            base.OnGamePreload(purpose, mode);
+
+            for (int i = 0; i < m_Samples.Length; i++)
             {
                 m_Samples[i] = Entity.Null;
                 m_LastWear[i] = 0f;
