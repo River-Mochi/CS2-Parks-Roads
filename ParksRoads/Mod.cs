@@ -11,6 +11,8 @@
 
 namespace ParksRoads
 {
+    using System;                    // Exception
+    using System.Reflection;         // Assembly
     using Colossal;                  // IDictionarySource
     using Colossal.IO.AssetDatabase; // AssetDatabase.LoadSettings
     using Colossal.Localization;     // LocalizationManager
@@ -19,8 +21,6 @@ namespace ParksRoads
     using Game;                      // UpdateSystem, GameMode, SystemUpdatePhase
     using Game.Modding;              // IMod
     using Game.SceneFlow;            // GameManager
-    using System;                    // Exception
-    using System.Reflection;         // Assembly
 
     /// <summary>Mod entry point: registers settings, locales, and ECS systems.</summary>
     public sealed class Mod : IMod
@@ -63,9 +63,23 @@ namespace ParksRoads
             Settings = setting;
 
             AddLocaleSource("en-US", new LocaleEN(setting));
+            AddLocaleSource("de-DE", new LocaleDE(setting));
+            AddLocaleSource("es-ES", new LocaleES(setting));
+            AddLocaleSource("fr-FR", new LocaleFR(setting));
+            AddLocaleSource("it-IT", new LocaleIT(setting));
+            AddLocaleSource("ja-JP", new LocaleJA(setting));
+            AddLocaleSource("ko-KR", new LocaleKO(setting));
+            AddLocaleSource("nl-NL", new LocaleNL(setting));
+            AddLocaleSource("pl-PL", new LocalePL(setting));
+            AddLocaleSource("pt-BR", new LocalePT_BR(setting));
+            AddLocaleSource("pt-PT", new LocalePT_PT(setting));
+            AddLocaleSource("tr-TR", new LocaleTR(setting));
+            AddLocaleSource("vi-VN", new LocaleVI(setting));
+            AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));
+            AddLocaleSource("zh-HANT", new LocaleZH_HANT(setting));
 
             // Load settings (.coc) into the instance.
-            // The default instance passed here provides defaults for missing fields.
+            // default instance passed here provides defaults for missing fields.
             AssetDatabase.global.LoadSettings(ModId, setting, new PRLSettings(this));
 
             // Repair missing/out-of-range/invalid values in-memory (no auto-save).
