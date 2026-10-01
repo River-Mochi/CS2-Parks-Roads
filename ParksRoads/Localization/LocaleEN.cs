@@ -65,8 +65,7 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)), "Vehicle work rate" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)),
-                    "Scales park maintenance **work rate**.\n" +
-                    "Rate means how much work the vehicle does per simulation tick while stopped.\n" +
+                    "Scales how quickly park maintenance vehicles do work while working.\n" +
                     "**100%** = vanilla." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetParkMaintenanceToVanillaButton)), "Reset park maintenance" },
@@ -74,7 +73,7 @@ namespace ParksRoads
                     "Reset park maintenance values back to **100%**." },
 
                 // -------------------
-                // Road repair / lane wear
+                // Road repair
                 // -------------------
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceDepotScalar)), "Depot fleet size" },
@@ -91,8 +90,7 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)), "Repair rate" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)),
-                    "Scales road maintenance **repair rate**.\n" +
-                    "Rate means how much repair work the truck performs per simulation tick while stopped.\n" +
+                    "Scales how quickly road maintenance trucks repair roads while working.\n" +
                     "**100%** = vanilla." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
