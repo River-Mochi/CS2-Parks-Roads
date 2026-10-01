@@ -242,19 +242,17 @@ namespace ParksRoads
 
             try
             {
-                using (NativeArray<Entity> lanes = m_LanesByFrameQuery.ToEntityArray(Allocator.Temp))
+                using NativeArray<Entity> lanes = m_LanesByFrameQuery.ToEntityArray(Allocator.Temp);
+                int filled = 0;
+
+                for (int i = 0; i < lanes.Length && filled < kSamplesPerGroup; i++)
                 {
-                    int filled = 0;
+                    Entity lane = lanes[i];
+                    if (lane == Entity.Null)
+                        continue;
 
-                    for (int i = 0; i < lanes.Length && filled < kSamplesPerGroup; i++)
-                    {
-                        Entity lane = lanes[i];
-                        if (lane == Entity.Null)
-                            continue;
-
-                        m_Samples[baseIndex + filled] = lane;
-                        filled++;
-                    }
+                    m_Samples[baseIndex + filled] = lane;
+                    filled++;
                 }
             }
             finally
