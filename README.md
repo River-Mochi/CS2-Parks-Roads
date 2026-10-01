@@ -1,4 +1,4 @@
-## Parks, Roads & Lane Wear
+## Parks, Roads + Lane Wear
 - **Park maintenance**
   - Depot fleet size
   - Vehicle maintenance capacity

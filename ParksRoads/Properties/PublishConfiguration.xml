@@ -1,14 +1,14 @@
 <Publish>
-	<!--Id must be set in order to update existing mod. it is not required for publishing mod for the first time-->
-	<ModId Value="" />
-	<!--Name of the mod to display to players-->
-	<DisplayName Value="Parks, Roads &amp; Lane Wear" />
-	<!--Short description of the mod-->
-	<ShortDescription Value="Adjust Park Maintenance, Road Repairs, and road Lane Wear." />
-	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
-	<!--LongDescription Value="This is a long description" /-->
+<!--Id must be set in order to update existing mod. it is not required for publishing mod for the first time-->
+<ModId Value="" />
+<!--Name of the mod to display to players-->
+<DisplayName Value="Parks, Roads + Lane Wear" />
+<!--Short description of the mod-->
+<ShortDescription Value="Adjust Park Maintenance, Road Repairs, and road Lane Wear." />
+<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
+<!--LongDescription Value="This is a long description" /-->
 <LongDescription>
-### Parks, Roads &amp; Lane Wear
+### Parks, Roads + Lane Wear
 
 Adjust each feature independently. Every slider starts at 100%, the game default.
 
@@ -22,29 +22,28 @@ This is a separate mod. All Transit + Trucks is not required.
 
 ### Support and feedback
 Use the GitHub and Discord links on this page.
+
+### Credits and Thanks
+- RiverMochi - mod author
+
 </LongDescription>
-	<!--Thumbnail-->
-	<Thumbnail Value="Properties/Thumbnail-PwP03.jpg" />
-	<!--Screenshot, can be set multiple times-->
-	<Screenshot Value="Properties/image10-Transit.jpg" />
-    <Screenshot Value="Properties/image15-PwP-Before-After.jpg" />
-	<Screenshot Value="Properties/image20-Passengers.jpg" />
-	<Screenshot Value="Properties/image30-Industry.jpg" />
-	<Screenshot Value="Properties/image40-Maintenance.jpg" />
-    <Screenshot Value="Properties/image50-Senryu-PwP.jpg" />
-	<!--Tag, can be set multiple times-->
-	<Tag Value="Code Mod" />
-	<!--Link to the forum post where the mod can be discussed-->
-	<!--Version of the mod-->
-	<ModVersion Value="0.5.0" />
-	<!--Recommended version of the base game to use the mod-->
-	<GameVersion Value="1.6.*" />
-	<!--Dependency for the mod, can be set multiple times-->
-	<Dependency Id="" />
-	<!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
+<!--Thumbnail-->
+<Thumbnail Value="Properties/Thumbnail01.jpg" />
+<!--Screenshot, can be set multiple times-->
+<Screenshot Value="Properties/image40-Maintenance.jpg" />
+<!--Tag, can be set multiple times-->
+<Tag Value="Code Mod" />
+<!--Link to the forum post where the mod can be discussed-->
+<!--Version of the mod-->
+<ModVersion Value="0.5.0" />
+<!--Recommended version of the base game to use the mod-->
+<GameVersion Value="1.6.*" />
+<!--Dependency for the mod, can be set multiple times-->
+<Dependency Id="" />
+<!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
 </ChangeLog>
-	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
+<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
 <ExternalLink Type="discord" Url="https://discord.gg/gwXgvtyhjc" />
 <ExternalLink Type="github" Url="https://github.com/River-Mochi/CS2-Parks-Roads" />
 </Publish>

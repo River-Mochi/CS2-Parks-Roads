@@ -23,8 +23,8 @@ namespace ParksRoads
 
     public sealed class Mod : IMod
     {
-        public const string ModName = "Parks, Roads & Lane Wear";
-        public const string ShortName = "Parks, Roads & Lane Wear";
+        public const string ModName = "Parks, Roads + Lane Wear";
+        public const string ShortName = "Parks, Roads + Lane Wear";
         public const string ModId = "ParksRoads";
         public const string ModTag = "[ParksRoads]";
 
