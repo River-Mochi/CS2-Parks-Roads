@@ -36,4 +36,4 @@ English. Other translations can be added after the gameplay and English UI are v
 - Support Discord: https://discord.gg/HTav7ARPs2
 
 ## License
-MIT
+GPL-3.0-or-later with the Cities: Skylines II Linking Exception.
