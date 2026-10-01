@@ -14,7 +14,7 @@ namespace ParksRoads
     using System;                    // Exception
     using Colossal.IO.AssetDatabase; // FileLocation
     using Colossal.PSI.Environment;   // EnvPath
-    using CS2Shared.RiverMochi;      // LogUtils
+    using CS2Shared.RiverMochi;      // LogUtils, ShellOpen
     using Game;                      // IsGame
     using Game.Modding;              // IMod, ModSetting
     using Game.SceneFlow;            // GameManager

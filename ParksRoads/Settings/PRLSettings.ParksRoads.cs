@@ -11,7 +11,6 @@
 
 namespace ParksRoads
 {
-    using CS2Shared.RiverMochi;
     using Game.Settings;     // Settings UI attributes
     using Game.UI;           // Unit
 
