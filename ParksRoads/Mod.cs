@@ -85,6 +85,7 @@ namespace ParksRoads
                     // These locales are not officially supported by the game,
                     // but work with alternate language mods.
                     localizationManager.AddSource("pt-PT", new LocalePT_PT(setting));
+                    localizationManager.AddSource("th-TH", new LocaleTH(setting));
                     localizationManager.AddSource("tr-TR", new LocaleTR(setting));
                     localizationManager.AddSource("vi-VN", new LocaleVI(setting));
                     localizationManager.AddSource("nl-NL", new LocaleNL(setting));
