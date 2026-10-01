@@ -60,12 +60,12 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleCapacityScalar)), "Work shift capacity" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleCapacityScalar)),
                     "Scales park maintenance **work shift capacity**.\n" +
-                    "This is the total work a maintenance vehicle can do before returning to its building.\n" +
+                    "This is the total work a maintenance truck can do before returning to its building.\n" +
                     "**100%** = vanilla." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)), "Vehicle work rate" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ParkMaintenanceVehicleRateScalar)),
-                    "Scales how quickly park maintenance vehicles do work while working.\n" +
+                    "Scales how quickly park maintenance trucks do work.\n" +
                     "**100%** = vanilla." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetParkMaintenanceToVanillaButton)), "Reset park maintenance" },
@@ -90,7 +90,7 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)), "Repair rate" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadMaintenanceVehicleRateScalar)),
-                    "Scales how quickly road maintenance trucks repair roads while working.\n" +
+                    "Scales how quickly road maintenance trucks repair roads.\n" +
                     "**100%** = vanilla." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
