@@ -89,6 +89,7 @@ namespace ParksRoads
                     localizationManager.AddSource("tr-TR", new LocaleTR(setting));
                     localizationManager.AddSource("vi-VN", new LocaleVI(setting));
                     localizationManager.AddSource("nl-NL", new LocaleNL(setting));
+                    localizationManager.AddSource("uk-UA", new LocaleUK(setting));
                 }
             }
             catch (Exception ex)

@@ -32,7 +32,7 @@ Available on the **About** tab:
 - All Transit + Trucks is not required.
 
 ## Languages
-English, Nederlands, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Türkçe, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
+English, Nederlands, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Türkçe, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt, ไทย, Українська
 
 ## Credits
 - River-Mochi — author and maintainer
