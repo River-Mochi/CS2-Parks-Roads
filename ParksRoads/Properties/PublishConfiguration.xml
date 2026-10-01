@@ -4,14 +4,14 @@
 <!--Name of the mod to display to players-->
 <DisplayName Value="Parks, Roads + Lane Wear" />
 <!--Short description of the mod-->
-<ShortDescription Value="Adjust Park Maintenance, Road Repairs, and road Lane Wear." />
+<ShortDescription Value="Adjust Park Maintenance, Road Repairs, and Lane Wear." />
 <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 <!--LongDescription Value="This is a long description" /-->
 <LongDescription>
 # 🏕️ 🛻
 ### Parks, Roads + Lane Wear
 
-Take control of how your city maintains parks, road truck, and lane wear.
+Take control of park maintenance, road repair trucks, and lane wear.
 
 ### Adjust
 - 🏕️ **Park maintenance:** depot fleet size, work capacity, and work rate
@@ -32,8 +32,9 @@ See the in-game Options tooltips for more details.
 - Feedback and PRs welcome through the GitHub and Discord links (icons on the right).
 
 ### 15+ Languages
-
-Hello, Bonjour, Hallo, Hola, Ciao, こんにちは, 안녕하세요, Cześć, Oi, Olá, สวัสดี, Merhaba, Привіт, Xin chào, 你好, 哈囉
+English, Nederlands, Français, Deutsch, Español, Italiano, Polski,
+Português (Brasil), Português (Portugal), Türkçe, 한국어, 日本語,
+简体中文, 繁體中文, Tiếng Việt
 
 ### Credits
 - River-Mochi — author and maintainer
