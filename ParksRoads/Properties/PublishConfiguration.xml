@@ -8,23 +8,38 @@
 <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 <!--LongDescription Value="This is a long description" /-->
 <LongDescription>
-### Parks, Roads + Lane Wear
+    # 🏕️ 🛻
+    ### Parks, Roads + Lane Wear
 
-Adjust each feature independently. Every slider starts at 100%, the game default.
+    Take control of how your city maintains parks, road truck, and lane wear.
 
-- Park maintenance: depot fleet size, vehicle work capacity, and work rate.
-- Road maintenance: depot fleet size, vehicle work capacity, and repair rate.
-- Lane wear: change how quickly road lanes deteriorate from time and traffic.
+    ### Adjust
+    - 🏕️ **Park maintenance:** depot fleet size, work capacity, and work rate
+    - 🛻 **Road repair:** depot fleet size, work capacity, and repair rate
+    - **Lane wear:** make roads deteriorate slower or faster (we ❤️ potholes)
 
-Settings can be changed while a city is loaded. The About tab provides a one-time report for checking the current prefab values.
+    Each feature works independently, and **100% = game default**.
 
-This is a separate mod. All Transit + Trucks is not required.
+    - Reset buttons restore game defaults
+    - Safe to remove anytime. All vanilla, no Harmony patches; more reliable on game patch days.
+    - Parks and Roads was originally in [All Transit + Trucks](https://mods.paradoxplaza.com/mods/138390/Windows) mod (ATT). Players asked for Parks/Roads to be separate to reduce confusion.
 
-### Support and feedback
-Use the GitHub and Discord links on this page.
+    See the in-game Options tooltips for more details.
 
-### Credits and Thanks
-- RiverMochi - mod author
+    ### Support and Feedback
+
+    - Support by clicking Like 👍 (top right). No donations requested.
+    - Feedback and PRs welcome through the GitHub and Discord links (icons on the right).
+
+    ### 15+ Languages
+
+    Hello, Bonjour, Hallo, Hola, Ciao, こんにちは, 안녕하세요, Cześć, Oi, Olá, สวัสดี, Merhaba, Привіт, Xin chào, 你好, 哈囉
+
+    ### Credits
+    - River-Mochi — author and maintainer
+
+    ## Languages
+    English, Nederlands, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Türkçe, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
 
 </LongDescription>
 <!--Thumbnail-->

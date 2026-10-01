@@ -1,30 +1,42 @@
 ## Parks, Roads + Lane Wear
-- **Park maintenance**
-  - Depot fleet size
-  - Vehicle maintenance capacity
-  - Vehicle maintenance rate
-- **Road maintenance**
-  - Depot fleet size
-  - Work Shift capacity
-  - Repair rate (alpha)
-- **Road wear speed** (alpha)
 
-### Debug Tools (About tab)
-- **Prefab Scan Report** (writes `ModsData/ParksRoads/ScanReport-ParksRoads.txt`)
-- **Open log folder** / **Open report folder**
-- Optional verbose logging (disable for normal gameplay)
+Adjust park maintenance, road repairs, and lane wear independently.
+
+### Park maintenance
+- Depot fleet size
+- Work shift capacity
+- Vehicle work rate
+
+### Road repair
+- Depot fleet size
+- Work shift capacity
+- Repair rate
+
+### Lane wear
+- Control how quickly roads deteriorate from time and traffic
+- 100% = game default
+- Lower values = slower wear
+- Higher values = faster wear
+
+### Debug Tools
+Available on the **About** tab:
+- Prefab Scan Report
+- Open log
+- Open report folder
+- Optional verbose debug logging
 
 ## Notes
-- Changes apply while a city is loaded; no restart needed.
-- Safe to remove any time (use reset buttons if you want to return to vanilla first).
-- This mod changes park maintenance, road maintenance, and lane wear without Harmony patches.
+- Each feature can be adjusted independently.
+- Use the Reset buttons to return settings to game defaults.
+- No Harmony patches.
+- All Transit + Trucks is not required.
 
 ## Languages
-English. Other translations can be added after the gameplay and English UI are validated.
+English, Nederlands, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Türkçe, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
 
 ## Credits
-- River-Mochi — author/maintainer, localization
-- yenyang — code review & technical advice
+- River-Mochi — author and maintainer
+- yenyang — code review and technical advice
 
 ## Links
 - GitHub: https://github.com/River-Mochi/CS2-Parks-Roads
