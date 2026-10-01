@@ -83,15 +83,6 @@ namespace ParksRoads
             SetDefaults();
         }
 
-        /// <summary>
-        /// Repair missing or out-of-range values after LoadSettings.
-        /// No auto-save performed.
-        /// </summary>
-        public void SanitizeAfterLoad()
-        {
-            RepairAndClamp();
-        }
-
         public override void SetDefaults()
         {
             SetDefaults_ParksRoads();
@@ -101,9 +92,6 @@ namespace ParksRoads
 
         public override void Apply()
         {
-            // Repair in-memory values first so ECS always sees sane inputs.
-            RepairAndClamp();
-
             base.Apply();
 
             GameManager gm = GameManager.instance;
@@ -276,40 +264,7 @@ namespace ParksRoads
             }
         }
 
-        // ------------------------
-        // Robust repair/clamp
-        // ------------------------
-
-        private void RepairAndClamp()
-        {
-            RepairAndClamp_ParksRoads();
-
-            // Debug toggle is a bool; no repair needed.
-        }
-
-        private static float ClampPercentOrVanilla(float value, float min, float max, float vanilla)
-        {
-            if (!IsFinite(value) || value == 0f)
-            {
-                return vanilla;
-            }
-
-            if (value < min || value > max)
-            {
-                return vanilla;
-            }
-
-            return value;
-        }
-
-        private static bool IsFinite(float v)
-        {
-            return !(float.IsNaN(v) || float.IsInfinity(v));
-        }
-
         // Partial hooks keep files organized without duplicating boilerplate.
         partial void SetDefaults_ParksRoads();
-
-        partial void RepairAndClamp_ParksRoads();
     }
 }

@@ -108,18 +108,5 @@ namespace ParksRoads
 
             RoadWearScalar = kVanillaPercent;
         }
-
-        partial void RepairAndClamp_ParksRoads()
-        {
-            ParkMaintenanceDepotScalar = ClampPercentOrVanilla(ParkMaintenanceDepotScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            ParkMaintenanceVehicleCapacityScalar = ClampPercentOrVanilla(ParkMaintenanceVehicleCapacityScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            ParkMaintenanceVehicleRateScalar = ClampPercentOrVanilla(ParkMaintenanceVehicleRateScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-
-            RoadMaintenanceDepotScalar = ClampPercentOrVanilla(RoadMaintenanceDepotScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            RoadMaintenanceVehicleCapacityScalar = ClampPercentOrVanilla(RoadMaintenanceVehicleCapacityScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-            RoadMaintenanceVehicleRateScalar = ClampPercentOrVanilla(RoadMaintenanceVehicleRateScalar, MaintenanceMinPercent, MaintenanceMaxPercent, kVanillaPercent);
-
-            RoadWearScalar = ClampPercentOrVanilla(RoadWearScalar, RoadWearMinPercent, RoadWearMaxPercent, kVanillaPercent);
-        }
     }
 }

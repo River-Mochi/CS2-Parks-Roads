@@ -7,22 +7,20 @@
 // ================= </copyright> ======================
 
 // File: Mod.cs
-// Entrypoint: registers settings, locales, and the ECS systems.
+// Entrypoint: registers settings, locales, and ECS systems.
 
 namespace ParksRoads
 {
     using System;                    // Exception
     using System.Reflection;         // Assembly
-    using Colossal;                  // IDictionarySource
     using Colossal.IO.AssetDatabase; // AssetDatabase.LoadSettings
     using Colossal.Localization;     // LocalizationManager
     using Colossal.Logging;          // ILog
-    using CS2Shared.RiverMochi;      // LogUtils
-    using Game;                      // UpdateSystem, GameMode, SystemUpdatePhase
+    using CS2Shared.RiverMochi;      // LogUtils, ShellOpen
+    using Game;                      // UpdateSystem, SystemUpdatePhase
     using Game.Modding;              // IMod
     using Game.SceneFlow;            // GameManager
 
-    /// <summary>Mod entry point: registers settings, locales, and ECS systems.</summary>
     public sealed class Mod : IMod
     {
         public const string ModName = "Parks, Roads & Lane Wear";
@@ -58,66 +56,57 @@ namespace ParksRoads
                 LogUtils.Info(s_Log, () => $"{ModName} {ModTag} v{ModVersion} [{kBuildType}] OnLoad");
             }
 
-            // Settings first so locale labels can resolve.
+            // Locales need the same settings instance used by Options.
             PRLSettings setting = new(this);
             Settings = setting;
 
-        try
-        {
-            LocalizationManager? localizationManager = GameManager.instance?.localizationManager;
-
-            if (localizationManager == null)
+            try
             {
-                LogUtils.Warn(s_Log, () => $"{ModTag} LocalizationManager is null; locale sources were not registered.");
+                LocalizationManager? localizationManager = GameManager.instance?.localizationManager;
+
+                if (localizationManager == null)
+                {
+                    LogUtils.Warn(s_Log, () => $"{ModTag} LocalizationManager is null; locale sources were not registered.");
+                }
+                else
+                {
+                    localizationManager.AddSource("en-US", new LocaleEN(setting));
+                    localizationManager.AddSource("fr-FR", new LocaleFR(setting));
+                    localizationManager.AddSource("es-ES", new LocaleES(setting));
+                    localizationManager.AddSource("de-DE", new LocaleDE(setting));
+                    localizationManager.AddSource("it-IT", new LocaleIT(setting));
+                    localizationManager.AddSource("ja-JP", new LocaleJA(setting));
+                    localizationManager.AddSource("ko-KR", new LocaleKO(setting));
+                    localizationManager.AddSource("pl-PL", new LocalePL(setting));
+                    localizationManager.AddSource("pt-BR", new LocalePT_BR(setting));
+                    localizationManager.AddSource("zh-HANS", new LocaleZH_CN(setting));
+                    localizationManager.AddSource("zh-HANT", new LocaleZH_HANT(setting));
+
+                    // These locales are not officially supported by the game,
+                    // but work with alternate language mods.
+                    localizationManager.AddSource("pt-PT", new LocalePT_PT(setting));
+                    localizationManager.AddSource("tr-TR", new LocaleTR(setting));
+                    localizationManager.AddSource("vi-VN", new LocaleVI(setting));
+                    localizationManager.AddSource("nl-NL", new LocaleNL(setting));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                localizationManager.AddSource("en-US", new LocaleEN(setting));
-                localizationManager.AddSource("fr-FR", new LocaleFR(setting));
-                localizationManager.AddSource("es-ES", new LocaleES(setting));
-                localizationManager.AddSource("de-DE", new LocaleDE(setting));
-                localizationManager.AddSource("it-IT", new LocaleIT(setting));
-                localizationManager.AddSource("ja-JP", new LocaleJA(setting));
-                localizationManager.AddSource("ko-KR", new LocaleKO(setting));
-                localizationManager.AddSource("pl-PL", new LocalePL(setting));
-                localizationManager.AddSource("pt-BR", new LocalePT_BR(setting));
-                localizationManager.AddSource("zh-HANS", new LocaleZH_CN(setting));
-                localizationManager.AddSource("zh-HANT", new LocaleZH_HANT(setting));
-
-                // These locales are not officially supported by the game,
-                // but work with alternate language mods.
-                localizationManager.AddSource("pt-PT", new LocalePT_PT(setting));
-                localizationManager.AddSource("tr-TR", new LocaleTR(setting));
-                localizationManager.AddSource("vi-VN", new LocaleVI(setting));
-                localizationManager.AddSource("nl-NL", new LocaleNL(setting));
+                LogUtils.Warn(s_Log, () => $"{ModTag} Localization registration failed: {ex.GetType().Name}: {ex.Message}");
             }
-        }
-        catch (Exception ex)
-        {
-            LogUtils.Warn(s_Log, () => $"{ModTag} Localization registration failed: {ex.GetType().Name}: {ex.Message}");
-        }
 
-            // Load settings (.coc) into the instance.
-            // default instance passed here provides defaults for missing fields.
             AssetDatabase.global.LoadSettings(ModId, setting, new PRLSettings(this));
-
-            // Clamp invalid or out-of-range loaded values before systems use them.
-            setting.SanitizeAfterLoad();
-
             setting.RegisterInOptionsUI();
 
-            // Park maintenance, road maintenance, and lane wear systems.
             updateSystem.UpdateAfter<MaintenanceSystem>(SystemUpdatePhase.PrefabUpdate);
             updateSystem.UpdateAfter<LaneWearSystem>(SystemUpdatePhase.PrefabUpdate);
 
-            // Prefab scan: must work even while Options UI is open.
+            // Prefab scan must work while the Options UI is open.
             updateSystem.UpdateAt<PrefabScanSystem>(SystemUpdatePhase.PrefabUpdate);
 
 #if DEBUG
-            // Debug probe: logs LaneCondition.m_Wear deltas/runtime lane wear info.
             updateSystem.UpdateAt<LaneWearProbeSystem>(SystemUpdatePhase.GameSimulation);
 #endif
-
         }
 
         public void OnDispose()
@@ -128,6 +117,5 @@ namespace ParksRoads
                 Settings = null;
             }
         }
-    
     }
 }
