@@ -30,6 +30,14 @@ namespace ParksRoads
         public const string ModId = "ParksRoads";
         public const string ModTag = "[ParksRoads]";
 
+#if DEBUG
+        private const string kBuildType = "DEBUG";
+#else
+        private const string kBuildType = "RELEASE";
+#endif
+
+        public static string BuildDisplayName => kBuildType == "RELEASE" ? "Release" : "Debug";
+
         public static readonly string ModVersion =
             Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
 
@@ -47,29 +55,14 @@ namespace ParksRoads
             if (!s_BannerLogged)
             {
                 s_BannerLogged = true;
-                LogUtils.Info(s_Log, () => $"{ModName} v{ModVersion} OnLoad");
+                LogUtils.Info(s_Log, () => $"{ModName} {ModTag} v{ModVersion} [{kBuildType}] OnLoad");
             }
 
             // Settings first so locale labels can resolve.
             PRLSettings setting = new(this);
             Settings = setting;
 
-            // Register ALL languages later when the split mod is stable.
             AddLocaleSource("en-US", new LocaleEN(setting));
-            // AddLocaleSource("fr-FR", new LocaleFR(setting));
-            // AddLocaleSource("es-ES", new LocaleES(setting));
-            // AddLocaleSource("de-DE", new LocaleDE(setting));
-            // AddLocaleSource("it-IT", new LocaleIT(setting));
-            // AddLocaleSource("ja-JP", new LocaleJA(setting));
-            // AddLocaleSource("ko-KR", new LocaleKO(setting));
-            // AddLocaleSource("pl-PL", new LocalePL(setting));
-            // AddLocaleSource("pt-BR", new LocalePT_BR(setting));
-            // AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));    // Simplified Chinese
-            // AddLocaleSource("zh-HANT", new LocaleZH_HANT(setting));  // Traditional Chinese
-            // AddLocaleSource("th-TH", new LocaleTH(setting));         // Thai
-            // AddLocaleSource("vi-VN", new LocaleVI(setting));         // Vietnamese
-            // AddLocaleSource("tr-TR", new LocaleTR(setting));         // Turkish
-            // AddLocaleSource("pt-PT", new LocalePT_PT(setting));      // European Portuguese
 
             // Load settings (.coc) into the instance.
             // The default instance passed here provides defaults for missing fields.
@@ -92,13 +85,10 @@ namespace ParksRoads
             updateSystem.UpdateAt<LaneWearProbeSystem>(SystemUpdatePhase.GameSimulation);
 #endif
 
-            LogUtils.Info(s_Log, () => $"{ModId}.{nameof(OnLoad)} Completed.");
         }
 
         public void OnDispose()
         {
-            LogUtils.Info(s_Log, () => "OnDispose");
-
             if (Settings != null)
             {
                 Settings.UnregisterInOptionsUI();

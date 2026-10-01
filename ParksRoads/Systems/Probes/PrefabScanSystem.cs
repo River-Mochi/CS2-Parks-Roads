@@ -11,7 +11,7 @@
 // Output: Writes report to {UserData}/ModsData/ParksRoads/ScanReport-ParksRoads.txt
 // Notes:
 // - Runs only when requested.
-// - First split-mod pass: Parks, road maintenance, lane wear only.
+// - Covers park maintenance, road maintenance, and lane wear.
 
 namespace ParksRoads
 {
@@ -314,11 +314,6 @@ namespace ParksRoads
                 PrefabScanState.MarkDone(sw.Elapsed, reportPath);
 
                 LogUtils.Info(Mod.s_Log, () => $"{Mod.ModTag} Prefab scan done in {sw.Elapsed.TotalSeconds:0.0}s. Report: {reportPath}");
-                LogUtils.Info(
-                    Mod.s_Log,
-                    () =>
-                        $"{Mod.ModTag} PrefabScan counts: " +
-                        $"MaintVehicles={maintenanceVehicleTotal}, MaintDepots={maintenanceDepotTotal}, LaneWearPrefabs={laneTotal}");
             }
             catch (Exception ex)
             {

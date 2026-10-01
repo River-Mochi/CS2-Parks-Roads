@@ -52,6 +52,12 @@ namespace ParksRoads
             Enabled = false;
         }
 
+        protected override void OnGamePreload(Purpose purpose, GameMode mode)
+        {
+            base.OnGamePreload(purpose, mode);
+            Enabled = false;
+        }
+
         protected override void OnGameLoadingComplete(Purpose purpose, GameMode mode)
         {
             base.OnGameLoadingComplete(purpose, mode);

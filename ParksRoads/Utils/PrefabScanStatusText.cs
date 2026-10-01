@@ -19,13 +19,13 @@ namespace ParksRoads
     public static class PrefabScanStatusText
     {
         // Locale keys (templates)
-        private const string KeyIdle = "PWP_SCAN_IDLE";
-        private const string KeyQueuedFmt = "PWP_SCAN_QUEUED_FMT";     // "{0}" = elapsed
-        private const string KeyRunningFmt = "PWP_SCAN_RUNNING_FMT";   // "{0}" = elapsed
-        private const string KeyDoneFmt = "PWP_SCAN_DONE_FMT";         // "{0}" = duration, "{1}" = timestamp
-        private const string KeyFailed = "PWP_SCAN_FAILED";
-        private const string KeyFailNoCity = "PWP_SCAN_FAIL_NO_CITY";
-        private const string KeyUnknownTime = "PWP_SCAN_UNKNOWN_TIME";
+        private const string KeyIdle = "PRL_SCAN_IDLE";
+        private const string KeyQueuedFmt = "PRL_SCAN_QUEUED_FMT";     // "{0}" = elapsed
+        private const string KeyRunningFmt = "PRL_SCAN_RUNNING_FMT";   // "{0}" = elapsed
+        private const string KeyDoneFmt = "PRL_SCAN_DONE_FMT";         // "{0}" = duration, "{1}" = timestamp
+        private const string KeyFailed = "PRL_SCAN_FAILED";
+        private const string KeyFailNoCity = "PRL_SCAN_FAIL_NO_CITY";
+        private const string KeyUnknownTime = "PRL_SCAN_UNKNOWN_TIME";
 
         public static string Format(PrefabScanState.Snapshot s)
         {

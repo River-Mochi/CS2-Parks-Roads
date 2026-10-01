@@ -23,10 +23,11 @@ namespace ParksRoads
     using UnityEngine;               // Application.OpenURL
 
     [FileLocation("ModsSettings/ParksRoads/ParksRoads")]
-    [SettingsUITabOrder(ParksRoadsTab, AboutTab)]
+    [SettingsUITabOrder(ActionsTab, AboutTab)]
     [SettingsUIGroupOrder(
         ParkMaintenanceGroup,
         RoadMaintenanceGroup,
+        LaneWearGroup,
         AboutInfoGroup,
         AboutLinksGroup,
         DebugGroup
@@ -34,18 +35,20 @@ namespace ParksRoads
     [SettingsUIShowGroupName(
         ParkMaintenanceGroup,
         RoadMaintenanceGroup,
+        LaneWearGroup,
         AboutLinksGroup,
         DebugGroup
     )]
     public partial class PRLSettings : ModSetting
     {
         // Tab ids.
-        public const string ParksRoadsTab = "Parks-Roads";
+        public const string ActionsTab = "Actions";
         public const string AboutTab = "About";
 
         // Group ids.
         public const string ParkMaintenanceGroup = "ParkMaintenance";
         public const string RoadMaintenanceGroup = "RoadMaintenance";
+        public const string LaneWearGroup = "LaneWear";
 
         public const string AboutInfoGroup = "AboutInfo";
         public const string AboutLinksGroup = "AboutLinks";
@@ -62,10 +65,10 @@ namespace ParksRoads
         public const float MaintenanceMaxPercent = 500f;
         public const float MaintenanceStepPercent = 10f;
 
-        // Road wear speed: percent (10%..500% = 0.1x..5x).
-        public const float RoadWearMinPercent = 10f;
+        // Road wear speed: percent (5%..500% = 0.05x..5x).
+        public const float RoadWearMinPercent = 5f;
         public const float RoadWearMaxPercent = 500f;
-        public const float RoadWearStepPercent = 10f;
+        public const float RoadWearStepPercent = 5f;
 
         private const string UrlParadox =
             "https://mods.paradoxplaza.com/authors/River-mochi/cities_skylines_2?games=cities_skylines_2&orderBy=desc&sortBy=best&time=alltime";
@@ -81,7 +84,7 @@ namespace ParksRoads
         }
 
         /// <summary>
-        /// Repair missing/out-of-range/legacy values after LoadSettings.
+        /// Repair missing or out-of-range values after LoadSettings.
         /// No auto-save performed.
         /// </summary>
         public void SanitizeAfterLoad()
@@ -144,7 +147,7 @@ namespace ParksRoads
         public string ModNameDisplay => $"{Mod.ModName} {Mod.ModTag}";
 
         [SettingsUISection(AboutTab, AboutInfoGroup)]
-        public string ModVersionDisplay => Mod.ModVersion;
+        public string ModVersionDisplay => $"{Mod.ModVersion} {Mod.BuildDisplayName}";
 
         [SettingsUIButtonGroup(AboutLinksGroup)]
         [SettingsUIButton]

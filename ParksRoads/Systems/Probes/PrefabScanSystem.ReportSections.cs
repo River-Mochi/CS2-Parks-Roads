@@ -55,7 +55,7 @@ namespace ParksRoads
             foreach (RefRO<PrefabRef> prefabRefRO in SystemAPI
                          .Query<RefRO<PrefabRef>>()
                          .WithAll<LaneCondition>()
-                         .WithNone<PrefabData>())
+                         .WithNone<PrefabData, global::Game.Common.Deleted, global::Game.Tools.Temp>())
             {
                 Entity prefab = prefabRefRO.ValueRO.m_Prefab;
                 liveLaneTotal++;

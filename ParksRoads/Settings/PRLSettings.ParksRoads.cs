@@ -22,20 +22,20 @@ namespace ParksRoads
         // ------------------------
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceDepotScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceVehicleCapacityScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public float ParkMaintenanceVehicleRateScalar { get; set; }
 
         [SettingsUIButtonGroup(ParkMaintenanceGroup)]
         [SettingsUIButton]
-        [SettingsUISection(ParksRoadsTab, ParkMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, ParkMaintenanceGroup)]
         public bool ResetParkMaintenanceToVanillaButton
         {
             set
@@ -51,24 +51,20 @@ namespace ParksRoads
         }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceDepotScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceVehicleCapacityScalar { get; set; }
 
         [SettingsUISlider(min = MaintenanceMinPercent, max = MaintenanceMaxPercent, step = MaintenanceStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public float RoadMaintenanceVehicleRateScalar { get; set; }
-
-        [SettingsUISlider(min = RoadWearMinPercent, max = RoadWearMaxPercent, step = RoadWearStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
-        public float RoadWearScalar { get; set; }
 
         [SettingsUIButtonGroup(RoadMaintenanceGroup)]
         [SettingsUIButton]
-        [SettingsUISection(ParksRoadsTab, RoadMaintenanceGroup)]
+        [SettingsUISection(ActionsTab, RoadMaintenanceGroup)]
         public bool ResetRoadMaintenanceToVanillaButton
         {
             set
@@ -78,8 +74,24 @@ namespace ParksRoads
                 RoadMaintenanceDepotScalar = kVanillaPercent;
                 RoadMaintenanceVehicleCapacityScalar = kVanillaPercent;
                 RoadMaintenanceVehicleRateScalar = kVanillaPercent;
-                RoadWearScalar = kVanillaPercent;
+                ApplyAndSave();
+            }
+        }
 
+        [SettingsUISlider(min = RoadWearMinPercent, max = RoadWearMaxPercent, step = RoadWearStepPercent, scalarMultiplier = 1, unit = Unit.kPercentage)]
+        [SettingsUISection(ActionsTab, LaneWearGroup)]
+        public float RoadWearScalar { get; set; }
+
+        [SettingsUIButtonGroup(LaneWearGroup)]
+        [SettingsUIButton]
+        [SettingsUISection(ActionsTab, LaneWearGroup)]
+        public bool ResetLaneWearToVanillaButton
+        {
+            set
+            {
+                if (!value) return;
+
+                RoadWearScalar = kVanillaPercent;
                 ApplyAndSave();
             }
         }

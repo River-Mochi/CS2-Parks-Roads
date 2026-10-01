@@ -27,28 +27,22 @@ namespace ParksRoads
             IList<IDictionaryEntryError> errors,
             Dictionary<string, int> indexCounts)
         {
-            string title = Mod.ShortName;
-
-            if (!string.IsNullOrEmpty(Mod.ModVersion))
-            {
-                title = title + " (" + Mod.ModVersion + ")";
-            }
-
             return new Dictionary<string, string>
             {
                 // --------------------------
                 // Mod title / tabs / groups
                 // --------------------------
 
-                { m_Setting.GetSettingsLocaleID(), title },
+                { m_Setting.GetSettingsLocaleID(), Mod.ShortName },
 
                 // Tabs
-                { m_Setting.GetOptionTabLocaleID(PRLSettings.ParksRoadsTab), "Parks, Roads & Lane Wear" },
+                { m_Setting.GetOptionTabLocaleID(PRLSettings.ActionsTab), "Actions" },
                 { m_Setting.GetOptionTabLocaleID(PRLSettings.AboutTab),      "About" },
 
                 // Groups
                 { m_Setting.GetOptionGroupLocaleID(PRLSettings.ParkMaintenanceGroup), "Park maintenance" },
-                { m_Setting.GetOptionGroupLocaleID(PRLSettings.RoadMaintenanceGroup), "Road repair / lane wear" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.RoadMaintenanceGroup), "Road repair" },
+                { m_Setting.GetOptionGroupLocaleID(PRLSettings.LaneWearGroup), "Lane wear" },
 
                 { m_Setting.GetOptionGroupLocaleID(PRLSettings.AboutInfoGroup),  "Info" },
                 { m_Setting.GetOptionGroupLocaleID(PRLSettings.AboutLinksGroup), "Support links" },
@@ -101,17 +95,25 @@ namespace ParksRoads
                     "Rate means how much repair work the truck performs per simulation tick while stopped.\n" +
                     "**100%** = vanilla." },
 
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)),
+                    "Reset road depot fleet size, work shift capacity, and repair rate to **100%**." },
+
+                // -------------------
+                // Lane wear
+                // -------------------
+
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Lane wear / road damage" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controls how quickly roads deteriorate from **time and traffic**.\n" +
-                    "**10%** = much slower road wear.\n" +
+                    "**5%** = much slower road wear.\n" +
                     "**100%** = vanilla.\n" +
                     "**500%** = faster road wear.\n" +
                     "This changes lane deterioration data for road wear / damage." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)), "Reset road repair" },
-                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetRoadMaintenanceToVanillaButton)),
-                    "Reset road repair, maintenance, and lane wear values back to **100%**." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Reset lane wear" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)),
+                    "Reset lane wear to **100%** without changing road repair settings." },
 
                 // -------------------
                 // About / debug
@@ -121,10 +123,10 @@ namespace ParksRoads
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ModNameDisplay)), "Display name of this mod." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ModVersionDisplay)), "Version" },
-                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ModVersionDisplay)), "Current mod version." },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ModVersionDisplay)), "Current mod version and build type." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Paradox" },
-                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Open the author's Paradox Mods page." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Mochi's Paradox mods" },
+                { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenParadoxMods)), "Open River-mochi's Paradox mods page." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenDiscord)), "Discord" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenDiscord)), "Open the community Discord in a browser." },
@@ -146,10 +148,11 @@ namespace ParksRoads
                     "Writes extra details to <ParksRoads.log> for troubleshooting.\n" +
                     "Disable for normal gameplay." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenLogButton)), "Open log folder" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenLogButton)), "Open log" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenLogButton)),
-                    "Open the logs folder.\n" +
-                    "Then open <ParksRoads.log> with your text editor." },
+                    "Open <Logs/ParksRoads.log>, or the Logs folder if the file does not exist yet.\n" +
+                    "Notepad++ can be used to view log files."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenReportButton)), "Open report folder" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenReportButton)),
@@ -157,14 +160,13 @@ namespace ParksRoads
                     "Then open <ScanReport-ParksRoads.txt> with your text editor." },
 
                 // ---- Scan Report Status Text ----
-                // Keep existing keys for now because PrefabScanStatusText may still call these exact IDs.
-                { "PWP_SCAN_IDLE", "Idle" },
-                { "PWP_SCAN_QUEUED_FMT", "Queued ({0})" },
-                { "PWP_SCAN_RUNNING_FMT", "Running ({0})" },
-                { "PWP_SCAN_DONE_FMT", "Done ({0} | {1})" },
-                { "PWP_SCAN_FAILED", "Failed" },
-                { "PWP_SCAN_FAIL_NO_CITY", "Load city first" },
-                { "PWP_SCAN_UNKNOWN_TIME", "unknown time" },
+                { "PRL_SCAN_IDLE", "Idle" },
+                { "PRL_SCAN_QUEUED_FMT", "Queued ({0})" },
+                { "PRL_SCAN_RUNNING_FMT", "Running ({0})" },
+                { "PRL_SCAN_DONE_FMT", "Done ({0} | {1})" },
+                { "PRL_SCAN_FAILED", "Failed" },
+                { "PRL_SCAN_FAIL_NO_CITY", "Load city first" },
+                { "PRL_SCAN_UNKNOWN_TIME", "unknown time" },
             };
         }
 
