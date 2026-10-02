@@ -8,34 +8,33 @@
 <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 <!--LongDescription Value="This is a long description" /-->
 <LongDescription>
-# 🏕️ 🛣️🛻
+# 🛻🏕️🛣️
 
-## Parks, Roads + Lane Wear
+### Take control of park maintenance, road repair trucks, and lane wear.
 
-Take control of park maintenance, road repair trucks, and lane wear.
+### Adjust
 
-## Adjust
 - **Park maintenance:** depot fleet size, work capacity, and work rate
 - **Road repair:** depot fleet size, work capacity, and repair rate
 - **Lane wear:** make roads deteriorate slower or faster. Damaged roads make vehicles drive slower.
 
-- Safe to remove anytime. All vanilla, no Harmony patches; more reliable on game patch days.
-- Parts of Parks and Roads was originally in [All Transit + Trucks](https://mods.paradoxplaza.com/mods/138390/Windows) mod (ATT). Players asked for Parks/Roads to be separate to reduce confusion.
+Each feature is optional. **100% = game default.**
 
-See the in-game Options tooltips for more details.
+
+## Performance
+- **Lightweight:** no in-city UI bloat.
+- **Set it and forget it.** Settings apply once, then the mod sleeps. No ongoing city performance hit.
+- Safe to remove anytime. All vanilla, no Harmony patches-more reliable on game patch days.
+- Some park and road features were originally in [All Transit + Trucks](https://mods.paradoxplaza.com/mods/138390/Windows). This standalone mod keeps them separate and simple.
+- See the in-game Options tooltips for more details.
 
 ## Support and Feedback
-
 - Support by clicking Like 👍 (top right). No donations requested.
 - Feedback and PRs welcome through the GitHub and Discord links (icons on the right).
 
 ## Credits
 - River-Mochi — author and maintainer
-- Thumbnail photo by [NPS.gov Yellowstone Park Renovation](https://www.nps.gov/yell/getinvolved/planning.htm)
-
-### Performance
-- Each feature works independently and is optional. **100% = game default**.
-- **Set it and forget it.** Your settings apply once, then the mod sleeps. No ongoing city performance hit - Easy!
+- Thumbnail photo by [nps.gov Yellowstone Park Renovation](https://www.nps.gov/yell/getinvolved/planning.htm)
 
 ### 16+ Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
