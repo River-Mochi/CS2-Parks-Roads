@@ -8,7 +8,8 @@
 <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
 <!--LongDescription Value="This is a long description" /-->
 <LongDescription>
-# 🏕️ 🛻
+# 🏕️ 🛣️🛻
+
 ### Parks, Roads + Lane Wear
 
 Take control of park maintenance, road repair trucks, and lane wear.
@@ -16,12 +17,12 @@ Take control of park maintenance, road repair trucks, and lane wear.
 ### Adjust
 - **Park maintenance:** depot fleet size, work capacity, and work rate
 - **Road repair:** depot fleet size, work capacity, and repair rate
-- **Lane wear:** make roads deteriorate slower or faster (we ❤️ potholes)
+- **Lane wear:** make roads deteriorate slower or faster. Damaged roads make vehicles drive slower.
 
 Each feature works independently, and **100% = game default**.
 
 - Safe to remove anytime. All vanilla, no Harmony patches; more reliable on game patch days.
-- Parks and Roads was originally in [All Transit + Trucks](https://mods.paradoxplaza.com/mods/138390/Windows) mod (ATT). Players asked for Parks/Roads to be separate to reduce confusion.
+- Parts of Parks and Roads was originally in [All Transit + Trucks](https://mods.paradoxplaza.com/mods/138390/Windows) mod (ATT). Players asked for Parks/Roads to be separate to reduce confusion.
 
 See the in-game Options tooltips for more details.
 
@@ -36,6 +37,8 @@ See the in-game Options tooltips for more details.
 
 ## 16+ Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
+
+tags: road maintenance, slow road speed, reduce damaged roads.
 
 </LongDescription>
 <!--Thumbnail-->
