@@ -33,7 +33,7 @@ See the in-game Options tooltips for more details.
 
 ### Credits
 - River-Mochi — author and maintainer
-- Thumbnail photo by [Tom Shamberger: Unsplash free license](https://unsplash.com/photos/a-large-truck-driving-down-a-wet-road--KAoVUNv9W0)
+- Thumbnail photo by [NPS.gov Yellowstone Park Renovation](https://www.nps.gov/yell/getinvolved/planning.htm)
 
 ## 16+ Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
@@ -42,7 +42,7 @@ tags: road maintenance, slow road speed, reduce damaged roads.
 
 </LongDescription>
 <!--Thumbnail-->
-<Thumbnail Value="Properties/Thumbnail01.jpg" />
+<Thumbnail Value="Properties/Thumbnail02.jpg" />
 <!--Screenshot, can be set multiple times-->
 <Screenshot Value="Properties/10-image-Options.jpg" />
 <!--Tag, can be set multiple times-->
