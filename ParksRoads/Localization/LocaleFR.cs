@@ -105,8 +105,8 @@ namespace ParksRoads
                     "**0%** = Aucune usure ; efface les dégâts et rappelle les camions de réparation inutiles. Les accidents restent pris en charge.\n\n" +
                     "**5%** = Usure bien plus lente ; moins de camions de réparation.\n" +
                     "**100%** = Réglage par défaut du jeu.\n" +
-                    "**500%** = Usure plus rapide.\n\n" +
-                    "**Snowy Roads :** La neige reste visible à 0%, mais les chasse-neige peuvent ne pas sortir. Essayez 5% ou plus pour favoriser leurs sorties (sans garantie)."
+                    "**500%** = Usure plus rapide ; davantage de camions de réparation.\n\n" +
+                    "**Snowy Roads :** La neige reste visible à 0%, mais les chasse-neige peuvent ne pas sortir. Essayez 5% ou plus pour favoriser leurs sorties."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Réinitialiser l’usure des voies" },
