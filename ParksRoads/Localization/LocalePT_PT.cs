@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = Desgaste muito mais lento; menos veículos de reparação.\n" +
                     "**100%** = Predefinição do jogo.\n" +
                     "**500%** = Desgaste mais rápido; saem mais veículos de reparação.\n\n" +
-                    "**Snowy Roads:** A neve continua visível a 0%, mas os limpa-neves podem não sair. Experimente 5% ou mais para favorecer as saídas."
+                    "Snowy Roads: A neve continua visível a 0%, mas <os limpa-neves podem não sair>. Experimente 5% ou mais para favorecer as saídas."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Repor desgaste das faixas" },
