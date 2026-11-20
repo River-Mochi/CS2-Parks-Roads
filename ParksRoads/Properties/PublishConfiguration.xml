@@ -19,7 +19,7 @@ Control park maintenance, road repair trucks, and the rate of road wear.
 - **Park maintenance:** depot fleet size, work capacity, and work rate.
 - **Road maintenance:** depot fleet size, work capacity, and repair rate.
 - **Lane wear:** roads deteriorate slower or faster. 0% stops road wear and recalls unneeded repair trucks. Damaged roads make vehicles drive slower.
-- Accident response still happens normally.
+    - Trucks still clear accidents normally.
 
 Each feature is optional. **100% = normal game default.**
 
@@ -89,7 +89,7 @@ tags: road maintenance, slow road speed, reduce damaged roads, no road wear.
 <Dependency Id="" />
 <!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
-- Player request filled: reduced slider from 5% limit to 0% option to allow no road wear.
+- Player request filled: reduced slider from 5% limit to 0% option to allow no wear.
 - Auto recalls trucks assigned to obsolete road repairs, reducing unnecessary traffic.
 - Accident response not affected.
 - Suggest setting road wear to at least 5% or more if using the Snowy Roads mod.
