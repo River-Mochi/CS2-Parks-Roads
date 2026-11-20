@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "车道磨损 / 道路损坏" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "控制道路因**时间和交通流量**而劣化的速度。\n" +
-                    "**0%** = 道路不再磨损，并清除现有磨损。\n" +
-                    "不再派车维修磨损；除雪车可能停止出动。事故处理仍正常。\n" +
-                    "**5%** = 道路磨损慢很多。\n" +
+                    "调节道路因**时间和车流**产生的磨损速度。\n" +
+                    "**0%** = 停止磨损、修复现有损坏，并召回不需要的修路车。事故救援照常进行。\n\n" +
+                    "**5%** = 磨损大幅减慢，修路车出勤更少。\n" +
                     "**100%** = 游戏默认。\n" +
-                    "**500%** = 道路磨损更快。\n" +
-                    "修改用于道路磨损 / 损坏的车道劣化数据。" },
+                    "**500%** = 磨损加快。\n\n" +
+                    "**Snowy Roads：** 设为0%仍会显示积雪，但除雪车可能不出勤。想让除雪车更常出动，可尝试5%或更高（不保证）。"
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "重置车道磨损" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "将车道磨损重置为 **100%**，不会更改道路维修设置。" },

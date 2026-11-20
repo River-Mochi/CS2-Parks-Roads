@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Şerit aşınması / yol hasarı" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Yolların **zaman ve trafik** nedeniyle ne kadar hızlı bozulduğunu kontrol eder.\n" +
-                    "**0%** = yol aşınması yok; mevcut aşınmayı temizler.\n" +
-                    "Aşınma için onarım aracı çıkmaz; kar küreme araçları da durabilir. Kazalara müdahale sürer.\n" +
-                    "**5%** = çok daha yavaş yol aşınması.\n" +
-                    "**100%** = oyun varsayılanı.\n" +
-                    "**500%** = daha hızlı yol aşınması.\n" +
-                    "Yol aşınması / hasarı için kullanılan şerit bozulma verilerini değiştirir." },
+                    "**Zaman ve trafik** nedeniyle yol aşınma hızını ayarlar.\n" +
+                    "**0%** = Aşınma yok; mevcut hasarı temizler ve gereksiz yol onarım araçlarını depoya çağırır. Kazalara müdahale devam eder.\n\n" +
+                    "**5%** = Çok daha yavaş aşınma; daha az onarım aracı.\n" +
+                    "**100%** = Oyunun varsayılanı.\n" +
+                    "**500%** = Daha hızlı aşınma.\n\n" +
+                    "**Snowy Roads:** %0'da kar görünmeye devam eder, ancak kar küreme araçları çıkmayabilir. Daha fazla sefer için %5 veya üstünü deneyin (garanti değil)."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Şerit aşınmasını sıfırla" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Yol onarım ayarlarını değiştirmeden şerit aşınmasını **100%** olarak sıfırlar." },
