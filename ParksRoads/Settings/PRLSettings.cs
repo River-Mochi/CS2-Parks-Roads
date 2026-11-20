@@ -65,7 +65,7 @@ namespace ParksRoads
         public const float MaintenanceMaxPercent = 500f;
         public const float MaintenanceStepPercent = 10f;
 
-        // Road wear speed: percent (5%..500% = 0.05x..5x).
+        // Road wear speed: percent (0%..500% = off..5x).
         public const float RoadWearMinPercent = 0f;
         public const float RoadWearMaxPercent = 500f;
         public const float RoadWearStepPercent = 5f;

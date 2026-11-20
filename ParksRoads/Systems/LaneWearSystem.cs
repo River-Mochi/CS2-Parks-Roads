@@ -12,13 +12,18 @@
 // - Run-once system: enabled on city load or when settings Apply() enables it.
 // - Reads authoring factors when available and caches them per prefab entity so changes do not stack.
 // - Affects how quickly lanes accumulate deterioration from BOTH time and traffic.
+// - At 0%, also clears saved wear on live lanes and road edges once.
 
 namespace ParksRoads
 {
     using Colossal.Serialization.Entities;
     using CS2Shared.RiverMochi;
     using Game;
+    using Game.Common;
+    using Game.Net;
     using Game.Prefabs;
+    using Game.Simulation;
+    using Game.Tools;
     using Game.SceneFlow;
     using System.Collections.Generic;
     using Unity.Entities;
@@ -86,12 +91,6 @@ namespace ParksRoads
                 return;
             }
 
-#if DEBUG
-bool verbose = Mod.Settings.EnableDebugLogging;
-#else
-            bool verbose = false;
-#endif
-
             float percent = Mod.Settings.RoadWearScalar; // 100 = vanilla
             if (percent < PRLSettings.RoadWearMinPercent) percent = PRLSettings.RoadWearMinPercent;
             if (percent > PRLSettings.RoadWearMaxPercent) percent = PRLSettings.RoadWearMaxPercent;
@@ -100,6 +99,8 @@ bool verbose = Mod.Settings.EnableDebugLogging;
 
             int total = 0;
             int changed = 0;
+            int activeTimePrefabs = 0;
+            int activeTrafficPrefabs = 0;
 
             foreach ((RefRW<LaneDeteriorationData> laneRef, Entity e) in SystemAPI
                          .Query<RefRW<LaneDeteriorationData>>()
@@ -148,15 +149,57 @@ bool verbose = Mod.Settings.EnableDebugLogging;
                 }
 
                 if (any) changed++;
+                if (lane.m_TimeFactor != 0f) activeTimePrefabs++;
+                if (lane.m_TrafficFactor != 0f) activeTrafficPrefabs++;
             }
 
-            if (verbose)
+            // Clearing existing wear is a one-time action when 0% is applied or a city loads.
+            // Match the live-entity filters used by vanilla NetDeteriorationSystem.
+            int lanesCleared = 0;
+            int roadsCleared = 0;
+            int lanesScanned = 0;
+            int roadsScanned = 0;
+
+            if (percent == 0f)
             {
-                LogUtils.Info(
-                    Mod.s_Log,
-                    () => $"{Mod.ModTag} Lane wear: RoadWearScalar={percent:0.#}% Scalar={scalar:0.###} " +
-                          $"Prefabs={total} Changed={changed} (scaled TimeFactor + TrafficFactor)");
+                foreach (RefRW<LaneCondition> condition in SystemAPI
+                             .Query<RefRW<LaneCondition>>()
+                             .WithAll<UpdateFrame>()
+                             .WithNone<Deleted, Temp>())
+                {
+                    lanesScanned++;
+
+                    if (condition.ValueRO.m_Wear != 0f)
+                    {
+                        condition.ValueRW.m_Wear = 0f;
+                        lanesCleared++;
+                    }
+                }
+
+                foreach (RefRW<NetCondition> condition in SystemAPI
+                             .Query<RefRW<NetCondition>>()
+                             .WithAll<UpdateFrame>()
+                             .WithNone<Deleted, Temp>())
+                {
+                    roadsScanned++;
+
+                    if (condition.ValueRO.m_Wear.x != 0f ||
+                        condition.ValueRO.m_Wear.y != 0f)
+                    {
+                        condition.ValueRW.m_Wear = 0f;
+                        roadsCleared++;
+                    }
+                }
             }
+
+            // One report per city load or settings apply; no per-frame logging.
+            LogUtils.Info(
+                Mod.s_Log,
+                () => $"{Mod.ModTag} Lane wear: Percent={percent:0.#}% " +
+                      $"Prefabs={total} Changed={changed} ActiveTime={activeTimePrefabs} ActiveTraffic={activeTrafficPrefabs}" +
+                      (percent == 0f
+                          ? $" ClearedLanes={lanesCleared}/{lanesScanned} ClearedRoads={roadsCleared}/{roadsScanned}"
+                          : " WearAccumulation=on"));
 
             Enabled = false;
         }
