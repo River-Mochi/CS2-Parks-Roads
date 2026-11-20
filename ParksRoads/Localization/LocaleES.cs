@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = Desgaste mucho más lento; menos camiones de reparación.\n" +
                     "**100%** = Valor predeterminado del juego.\n" +
                     "**500%** = Desgaste más rápido; salen más camiones de reparación.\n\n" +
-                    "**Snowy Roads:** La nieve sigue visible al 0%, pero puede que no salgan quitanieves. Prueba 5% o más para favorecer sus salidas."
+                    "Snowy Roads: La nieve sigue visible al 0%, pero <puede que no salgan quitanieves>. Prueba 5% o más para favorecer sus salidas."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Restablecer desgaste de carriles" },

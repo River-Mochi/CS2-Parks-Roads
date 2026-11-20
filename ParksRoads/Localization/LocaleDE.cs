@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = Viel langsamerer Verschleiß; weniger Reparaturfahrzeuge.\n" +
                     "**100%** = Spielstandard.\n" +
                     "**500%** = Schnellerer Verschleiß; mehr Reparaturfahrzeuge unterwegs.\n\n" +
-                    "**Snowy Roads:** Schnee bleibt bei 0% sichtbar, aber Schneepflüge fahren möglicherweise nicht aus. Für mehr Einsätze 5% oder höher versuchen."
+                    "Snowy Roads: Schnee bleibt bei 0% sichtbar, aber <Schneepflüge fahren möglicherweise nicht aus>. Für mehr Einsätze 5% oder höher versuchen."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Fahrbahnverschleiß zurücksetzen" },
