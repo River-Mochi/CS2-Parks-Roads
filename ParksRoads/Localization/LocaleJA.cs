@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "車線劣化 / 道路損傷" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "**時間と交通量**による道路の劣化速度を調整します。\n" +
+                    "**0%** = 道路の摩耗なし。既存の摩耗も消去します。\n" +
+                    "摩耗修理の車両は出動せず、除雪車も出動しない場合があります。事故対応は続きます。\n" +
                     "**5%** = 道路の劣化が大幅に遅くなります。\n" +
                     "**100%** = バニラ。\n" +
                     "**500%** = 道路の劣化が速くなります。\n" +

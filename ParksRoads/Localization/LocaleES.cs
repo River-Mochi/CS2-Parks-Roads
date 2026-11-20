@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Desgaste de carriles / daños en carretera" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controla la velocidad de deterioro de las carreteras por **tiempo y tráfico**.\n" +
+                    "**0%** = sin desgaste; elimina el desgaste existente.\n" +
+                    "Sin reparaciones por desgaste; puede que no salgan quitanieves. Se siguen atendiendo accidentes.\n" +
                     "**5%** = desgaste mucho más lento.\n" +
                     "**100%** = juego base.\n" +
                     "**500%** = desgaste más rápido.\n" +

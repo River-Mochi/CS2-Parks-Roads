@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "차선 마모 / 도로 손상" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "**시간과 교통량**에 따른 도로 열화 속도를 조정합니다.\n" +
+                    "**0%** = 도로 마모 없음. 기존 마모도 제거합니다.\n" +
+                    "마모 수리 차량은 출동하지 않으며 제설차도 멈출 수 있습니다. 사고 대응은 계속됩니다.\n" +
                     "**5%** = 도로 마모가 훨씬 느려집니다.\n" +
                     "**100%** = 기본값.\n" +
                     "**500%** = 도로 마모가 빨라집니다.\n" +

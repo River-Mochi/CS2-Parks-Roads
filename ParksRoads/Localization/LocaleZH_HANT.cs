@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "車道磨損 / 道路損壞" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "控制道路因**時間和交通流量**而劣化的速度。\n" +
+                    "**0%** = 道路不再磨損，並清除現有磨損。\n" +
+                    "不再派車維修磨損；除雪車可能停止出動。事故處理仍正常。\n" +
                     "**5%** = 道路磨損慢很多。\n" +
                     "**100%** = 遊戲預設。\n" +
                     "**500%** = 道路磨損更快。\n" +

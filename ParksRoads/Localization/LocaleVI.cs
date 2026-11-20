@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Hao mòn làn đường / hư hỏng đường" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Kiểm soát tốc độ xuống cấp của đường do **thời gian và lưu lượng giao thông**.\n" +
+                    "**0%** = đường không hao mòn; xóa hao mòn hiện có.\n" +
+                    "Không điều xe sửa đường vì hao mòn; xe dọn tuyết có thể ngừng chạy. Vẫn xử lý tai nạn.\n" +
                     "**5%** = hao mòn chậm hơn nhiều.\n" +
                     "**100%** = mặc định của game.\n" +
                     "**500%** = hao mòn nhanh hơn.\n" +

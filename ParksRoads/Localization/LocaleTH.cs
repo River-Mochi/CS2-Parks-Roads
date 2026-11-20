@@ -104,6 +104,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "การสึกหรอ / ความเสียหายของถนน" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "ควบคุมความเร็วที่ถนนเสื่อมสภาพจาก **เวลาและการจราจร**\n" +
+                    "**0%** = ถนนไม่สึกหรอ และลบความสึกหรอเดิม\n" +
+                    "ไม่มีรถซ่อมถนนจากการสึกหรอ รถกวาดหิมะอาจหยุดออกงาน แต่ยังจัดการอุบัติเหตุได้\n" +
                     "**5%** = ถนนสึกหรอช้าลงมาก\n" +
                     "**100%** = ค่าเริ่มต้นของเกม\n" +
                     "**500%** = ถนนสึกหรอเร็วขึ้น\n" +

@@ -104,6 +104,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Lane wear / road damage" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controls how quickly roads deteriorate from **time and traffic**.\n" +
+                    "**0%** = no road wear; clears existing wear.\n" +
+                    "No repair trucks for road wear; snow plows may stop. Accident response still works.\n" +
                     "**5%** = much slower road wear.\n" +
                     "**100%** = vanilla.\n" +
                     "**500%** = faster road wear.\n" +

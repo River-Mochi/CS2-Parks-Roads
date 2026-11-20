@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Desgaste das faixas / danos nas vias" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controla a velocidade de deterioração das vias por **tempo e tráfego**.\n" +
+                    "**0%** = sem desgaste; remove o desgaste existente.\n" +
+                    "Sem reparos por desgaste; limpa-neves podem parar. O atendimento a acidentes continua.\n" +
                     "**5%** = desgaste muito mais lento.\n" +
                     "**100%** = padrão do jogo.\n" +
                     "**500%** = desgaste mais rápido.\n" +

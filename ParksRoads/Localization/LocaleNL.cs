@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Rijstrookslijtage / wegschade" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Bepaalt hoe snel wegen slijten door **tijd en verkeer**.\n" +
+                    "**0%** = geen wegslijtage; bestaande slijtage wordt gewist.\n" +
+                    "Geen reparatieritten voor slijtage; sneeuwploegen kunnen stoppen. Hulp bij ongevallen blijft werken.\n" +
                     "**5%** = veel langzamere slijtage.\n" +
                     "**100%** = standaard.\n" +
                     "**500%** = snellere slijtage.\n" +
