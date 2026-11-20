@@ -87,7 +87,7 @@ tags: road maintenance, slow road speed, reduce damaged roads, no road wear.
 <Dependency Id="" />
 <!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
-- player request filled: reduced slider from 5% limit to 0% option to allow no road wear.
+- Player request filled: reduced slider from 5% limit to 0% option to allow no road wear.
 - Auto recalls trucks assigned to obsolete road repairs, reducing unnecessary traffic.
 - Accident response not affected.
 - Suggest setting road wear to at least 5% or more if using the Snowy Roads mod.

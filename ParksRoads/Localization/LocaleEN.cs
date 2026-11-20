@@ -112,7 +112,7 @@ namespace ParksRoads
                     "**0%** = No wear; clears existing damage and recalls unneeded repair trucks.\n" +
                     "Accident response still works at 0%.\n\n" +
                     "**5%** = Much slower wear; reduces repair trucks needed.\n" +
-                    "**100%** = Vanilla game default\n" +
+                    "**100%** = Vanilla game default.\n" +
                     "**500%** = Faster damage, more repair trucks go out.\n\n" +
                     "Snowy Roads: Snow still works at 0%, but <snowplow trucks may not be dispatched>. Try 5% or higher for more snowplow activity."
                 },
@@ -157,7 +157,7 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenLogButton)), "Open log" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.OpenLogButton)),
                     "Open <Logs/ParksRoads.log>, or the Logs folder if the file does not exist yet.\n" +
-                    "Notepad++ can be used to view log files."
+                    "Notepad++ suggested to view log files."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.OpenReportButton)), "Open report folder" },
