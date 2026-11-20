@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Usura corsie / danni stradali" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Controlla quanto velocemente le strade si deteriorano per **tempo e traffico**.\n" +
+                    "**0%** = niente usura; elimina quella già presente.\n" +
+                    "Niente riparazioni per usura; gli spazzaneve potrebbero fermarsi. Gli incidenti vengono ancora gestiti.\n" +
                     "**5%** = usura molto più lenta.\n" +
                     "**100%** = gioco base.\n" +
                     "**500%** = usura più rapida.\n" +

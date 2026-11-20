@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Zużycie pasów / uszkodzenia dróg" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Kontroluje tempo niszczenia dróg przez **czas i ruch uliczny**.\n" +
+                    "**0%** = brak zużycia dróg; usuwa istniejące zużycie.\n" +
+                    "Brak napraw z powodu zużycia; pługi mogą nie wyjeżdżać. Obsługa wypadków działa nadal.\n" +
                     "**5%** = znacznie wolniejsze zużycie.\n" +
                     "**100%** = ustawienie gry.\n" +
                     "**500%** = szybsze zużycie.\n" +

@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Usure des voies / dégâts routiers" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Contrôle la vitesse de dégradation des routes due au **temps et au trafic**.\n" +
+                    "**0%** = aucune usure ; l’usure existante est effacée.\n" +
+                    "Plus de réparations liées à l’usure ; les chasse-neige peuvent s’arrêter. Les accidents restent pris en charge.\n" +
                     "**5%** = usure beaucoup plus lente.\n" +
                     "**100%** = jeu de base.\n" +
                     "**500%** = usure plus rapide.\n" +
