@@ -18,7 +18,7 @@ Parks, Road Repair, Road Maintenance, Lane Wear, and Lane Damage reporting parts
 
 ## Kept systems
 
-These are the main systems that should remain in this split mod:
+main systems that should remain in this split mod:
 
 ```text
 Systems/MaintenanceSystem.cs
