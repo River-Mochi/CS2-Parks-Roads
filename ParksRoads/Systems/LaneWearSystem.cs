@@ -21,6 +21,7 @@ namespace ParksRoads
     using CS2Shared.RiverMochi;
     using Game;
     using Game.Common;
+    using Game.Events;
     using Game.Net;
     using Game.Pathfind;
     using Game.Prefabs;
@@ -33,6 +34,8 @@ namespace ParksRoads
 
     public sealed partial class LaneWearSystem : GameSystemBase
     {
+        private const int kSkippedTruckLogLimit = 8;
+
         private struct BaseFactors
         {
             public float Time;
@@ -167,6 +170,7 @@ namespace ParksRoads
             int trucksOnRoadRoutes = 0;
             int trucksWithOtherWork = 0;
             int trucksRecalled = 0;
+            int skippedTruckDetailsLogged = 0;
 
             if (percent == 0f)
             {
@@ -211,6 +215,10 @@ namespace ParksRoads
                     SystemAPI.GetComponentLookup<NetCondition>(true);
                 ComponentLookup<MaintenanceRequest> maintenanceRequests =
                     SystemAPI.GetComponentLookup<MaintenanceRequest>(true);
+                ComponentLookup<InvolvedInAccident> accidents =
+                    SystemAPI.GetComponentLookup<InvolvedInAccident>(true);
+                ComponentLookup<Vehicle> vehicles =
+                    SystemAPI.GetComponentLookup<Vehicle>(true);
 
                 foreach ((
                     RefRW<Game.Vehicles.MaintenanceVehicle> vehicleRef,
@@ -250,6 +258,16 @@ namespace ParksRoads
                         !roadConditions.HasComponent(currentTarget))
                     {
                         trucksWithOtherWork++;
+                        if (skippedTruckDetailsLogged < kSkippedTruckLogLimit)
+                        {
+                            skippedTruckDetailsLogged++;
+                            LogUtils.Info(Mod.s_Log,
+                                () => $"{Mod.ModTag} Lane wear: preserved truck {entity} Reason=OtherCurrentTarget " +
+                                      $"Target={currentTarget} Flags={flags} Pending={vehicleRef.ValueRO.m_RequestCount} " +
+                                      $"Dispatches={dispatches.Length} RoadTarget={roadConditions.HasComponent(currentTarget)} " +
+                                      $"AccidentTarget={accidents.HasComponent(currentTarget)} VehicleTarget={vehicles.HasComponent(currentTarget)}");
+                        }
+
                         continue;
                     }
 
@@ -260,24 +278,53 @@ namespace ParksRoads
                     }
 
                     bool hasOtherWork = false;
+                    int queuedRoad = 0;
+                    int queuedNonRoad = 0;
+                    int queuedAccident = 0;
+                    int queuedVehicle = 0;
+                    int queuedRoadPriority = 0;
+                    int missingRequests = 0;
+
                     foreach (ServiceDispatch dispatch in dispatches)
                     {
                         if (!maintenanceRequests.TryGetComponent(dispatch.m_Request, out MaintenanceRequest request))
                         {
+                            missingRequests++;
                             continue;
                         }
 
-                        if (!roadConditions.HasComponent(request.m_Target) ||
-                            NetDeteriorationSystem.GetMaintenancePriority(roadConditions[request.m_Target]) > 0)
+                        Entity requestTarget = request.m_Target;
+                        if (!roadConditions.HasComponent(requestTarget))
                         {
                             hasOtherWork = true;
-                            break;
+                            queuedNonRoad++;
+                            if (accidents.HasComponent(requestTarget)) queuedAccident++;
+                            if (vehicles.HasComponent(requestTarget)) queuedVehicle++;
+                            continue;
+                        }
+
+                        queuedRoad++;
+                        if (NetDeteriorationSystem.GetMaintenancePriority(roadConditions[requestTarget]) > 0)
+                        {
+                            hasOtherWork = true;
+                            queuedRoadPriority++;
                         }
                     }
 
                     if (hasOtherWork)
                     {
                         trucksWithOtherWork++;
+                        if (skippedTruckDetailsLogged < kSkippedTruckLogLimit)
+                        {
+                            skippedTruckDetailsLogged++;
+                            LogUtils.Info(Mod.s_Log,
+                                () => $"{Mod.ModTag} Lane wear: preserved truck {entity} Reason=QueuedOtherWork " +
+                                      $"Target={currentTarget} Flags={flags} Pending={vehicleRef.ValueRO.m_RequestCount} " +
+                                      $"Dispatches={dispatches.Length} QueuedRoad={queuedRoad} QueuedNonRoad={queuedNonRoad} " +
+                                      $"Accident={queuedAccident} Vehicle={queuedVehicle} RoadStillNeeded={queuedRoadPriority} " +
+                                      $"MissingRequests={missingRequests}");
+                        }
+
                         continue;
                     }
 
