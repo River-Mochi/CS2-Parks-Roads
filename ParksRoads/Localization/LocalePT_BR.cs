@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Desgaste das faixas / danos nas vias" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Controla a velocidade de deterioração das vias por **tempo e tráfego**.\n" +
-                    "**0%** = sem desgaste; remove o desgaste existente.\n" +
-                    "Sem reparos por desgaste; limpa-neves podem parar. O atendimento a acidentes continua.\n" +
-                    "**5%** = desgaste muito mais lento.\n" +
-                    "**100%** = padrão do jogo.\n" +
-                    "**500%** = desgaste mais rápido.\n" +
-                    "Altera os dados de deterioração das faixas usados para desgaste / danos nas vias." },
+                    "Controla o desgaste das vias por **tempo e tráfego**.\n" +
+                    "**0%** = Sem desgaste; remove danos e chama de volta os caminhões de reparo desnecessários. O atendimento a acidentes continua.\n\n" +
+                    "**5%** = Desgaste bem mais lento; menos caminhões de reparo.\n" +
+                    "**100%** = Padrão do jogo.\n" +
+                    "**500%** = Desgaste mais rápido.\n\n" +
+                    "**Snowy Roads:** A neve continua visível em 0%, mas os limpa-neves podem não sair. Tente 5% ou mais para aumentar as saídas (sem garantia)."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Redefinir desgaste das faixas" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Redefine o desgaste das faixas para **100%** sem alterar os ajustes de reparo." },
