@@ -108,12 +108,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Lane wear / road damage" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Controls road wear from **time and traffic**.\n" +
-                    "**0%** = No wear; clears damage and recalls unneeded repair trucks. Accident response still works.\n\n" +
-                    "**5%** = Much slower wear; fewer repair trucks.\n" +
-                    "**100%** = Game default.\n" +
-                    "**500%** = Faster wear.\n\n" +
-                    "**Snowy Roads:** Snow still appears at 0%, but snowplows may not be dispatched. Try 5% or higher for more snowplow activity (not guaranteed)."
+                    "Controls how fast roads get damaged from **time and traffic**.\n" +
+                    "**0%** = No wear; clears existing damage and recalls unneeded repair trucks.\n" +
+                    "Accident response still works at 0%.\n\n" +
+                    "**5%** = Much slower wear; reduces repair trucks needed.\n" +
+                    "**100%** = Vanilla game default\n" +
+                    "**500%** = Faster damage, more repair trucks go out.\n\n" +
+                    "Snowy Roads: Snow visuals still work at 0%, but snowplow trucks may not be dispatched. Try 5% or higher for more snowplow activity."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Reset lane wear" },

@@ -11,13 +11,16 @@
 # 🛻🏕️🛣️
 ## Parks, Roads + Lane Wear
 Control park maintenance, road repair trucks, and the rate of road wear.
+**调整公园维护、道路维修车辆和道路磨损速度。**
+
+🇨🇳 **简体中文介绍见下方 ↓ (Chinese below)**
 
 ### Adjust
 
 - **Park maintenance:** depot fleet size, work capacity, and work rate
 - **Road repair:** depot fleet size, work capacity, and repair rate
 - **Lane wear:** roads deteriorate slower or faster. Damaged roads make vehicles drive slower. 0% stops road wear, clears existing wear, recalls unneeded repair trucks
-    - Accident response still happens normally.
+- Accident response still happens normally.
 
 Each feature is optional. **100% = normal game default.**
 
@@ -43,7 +46,30 @@ Each feature is optional. **100% = normal game default.**
 ### 16+ Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
 
-tags: road maintenance, slow road speed, reduce damaged roads.
+tags: road maintenance, slow road speed, reduce damaged roads, no road wear.
+
+
+## 🛻 公园维护、道路维修与磨损控制
+
+自由调整公园维护、道路维修车队和道路磨损速度，让城市管理更轻松！
+
+### 主要功能
+
+- **公园维护：** 调整车辆数量、工作量和效率。
+- **道路维修：** 调整维修车队规模、工作量和维修速度。
+- **道路磨损：** 自由调整道路磨损速度。**设为 0% 可停止磨损、清除现有损坏，并召回不必要的修路车。** 事故救援照常进行。
+
+所有功能均可独立调整，**100% = 游戏原版设置**。
+
+### 性能与兼容性
+
+- **轻量高效：** 修改设置后自动应用，无需持续运行，不使用 Harmony 补丁。
+- **Snowy Roads：** 0% 仍可显示积雪，但除雪车可能不出动。建议尝试 **5% 或更高**，但不保证派车。
+- 可以随时卸载，且无需安装 All Transit + Trucks。
+
+👍 喜欢的话请点个赞！欢迎通过 GitHub 或 Discord 提出建议。
+
+更多详细说明，请安装模组后查看游戏内的 **选项菜单（Options）**。
 
 </LongDescription>
 <!--Thumbnail-->
