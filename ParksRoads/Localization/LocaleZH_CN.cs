@@ -105,8 +105,8 @@ namespace ParksRoads
                     "**0%** = 停止磨损、修复现有损坏，并召回不需要的修路车。事故救援照常进行。\n\n" +
                     "**5%** = 磨损大幅减慢，修路车出勤更少。\n" +
                     "**100%** = 游戏默认。\n" +
-                    "**500%** = 磨损加快。\n\n" +
-                    "**Snowy Roads：** 设为0%仍会显示积雪，但除雪车可能不出勤。想让除雪车更常出动，可尝试5%或更高（不保证）。"
+                    "**500%** = 磨损加快，更多修路车出勤。\n\n" +
+                    "**Snowy Roads：** 设为0%仍会显示积雪，但除雪车可能不出勤。想让除雪车更常出动，可尝试5%或更高。"
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "重置车道磨损" },

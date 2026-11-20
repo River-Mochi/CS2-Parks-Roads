@@ -105,8 +105,8 @@ namespace ParksRoads
                     "**0%** = Không hao mòn; xóa hư hỏng và gọi xe sửa đường không cần thiết về trạm. Vẫn xử lý tai nạn.\n\n" +
                     "**5%** = Hao mòn chậm hơn nhiều; ít xe sửa đường hơn.\n" +
                     "**100%** = Mặc định của game.\n" +
-                    "**500%** = Hao mòn nhanh hơn.\n\n" +
-                    "**Snowy Roads:** Tuyết vẫn hiển thị ở 0%, nhưng xe dọn tuyết có thể không xuất phát. Hãy thử 5% trở lên để tăng khả năng xuất xe (không đảm bảo)."
+                    "**500%** = Hao mòn nhanh hơn; nhiều xe sửa đường xuất phát hơn.\n\n" +
+                    "**Snowy Roads:** Tuyết vẫn hiển thị ở 0%, nhưng xe dọn tuyết có thể không xuất phát. Hãy thử 5% trở lên để tăng khả năng xuất xe."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Đặt lại hao mòn làn đường" },
