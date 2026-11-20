@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = 摩耗が大幅に遅くなり、修理車両の出動も減ります。\n" +
                     "**100%** = ゲーム標準。\n" +
                     "**500%** = 道路の摩耗が速くなり、修理車両の出動も増えます。\n\n" +
-                    "**Snowy Roads：** 0%でも雪は表示されますが、除雪車が出動しない場合があります。出動を増やしたい場合は5%以上を試してください。"
+                    "Snowy Roads： 0%でも雪は表示されますが、<除雪車が出動しない場合があります>。出動を増やしたい場合は5%以上を試してください。"
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "車線劣化をリセット" },

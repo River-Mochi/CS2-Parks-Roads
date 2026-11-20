@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = Znacznie wolniejsze zużycie; mniej pojazdów naprawczych.\n" +
                     "**100%** = Domyślne ustawienie gry.\n" +
                     "**500%** = Szybsze zużycie; więcej pojazdów naprawczych wyjeżdża.\n\n" +
-                    "**Snowy Roads:** Śnieg nadal widać przy 0%, ale pługi mogą nie wyjeżdżać. Spróbuj 5% lub więcej, aby zwiększyć szansę ich wyjazdu."
+                    "Snowy Roads: Śnieg nadal widać przy 0%, ale <pługi mogą nie wyjeżdżać>. Spróbuj 5% lub więcej, aby zwiększyć szansę ich wyjazdu."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Resetuj zużycie pasów" },

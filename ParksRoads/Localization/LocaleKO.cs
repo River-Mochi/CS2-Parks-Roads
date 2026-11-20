@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = 마모가 훨씬 느려지고 보수 차량 출동도 줄어듭니다.\n" +
                     "**100%** = 게임 기본값.\n" +
                     "**500%** = 마모가 빨라지고 보수 차량 출동도 늘어납니다.\n\n" +
-                    "**Snowy Roads:** 0%에서도 눈은 표시되지만 제설차가 출동하지 않을 수 있습니다. 출동을 늘리려면 5% 이상을 시도하세요."
+                    "Snowy Roads: 0%에서도 눈은 표시되지만 <제설차가 출동하지 않을 수 있습니다>. 출동을 늘리려면 5% 이상을 시도하세요."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "차선 마모 초기화" },
