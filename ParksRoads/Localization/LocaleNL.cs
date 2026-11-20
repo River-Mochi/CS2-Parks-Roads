@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Rijstrookslijtage / wegschade" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Bepaalt hoe snel wegen slijten door **tijd en verkeer**.\n" +
-                    "**0%** = geen wegslijtage; bestaande slijtage wordt gewist.\n" +
-                    "Geen reparatieritten voor slijtage; sneeuwploegen kunnen stoppen. Hulp bij ongevallen blijft werken.\n" +
-                    "**5%** = veel langzamere slijtage.\n" +
-                    "**100%** = standaard.\n" +
-                    "**500%** = snellere slijtage.\n" +
-                    "Wijzigt de rijstrookdata voor slijtage / wegschade." },
+                    "Regelt wegslijtage door **tijd en verkeer**.\n" +
+                    "**0%** = Geen slijtage; verwijdert schade en roept onnodige reparatiewagens terug. Hulp bij ongevallen blijft werken.\n\n" +
+                    "**5%** = Veel langzamere slijtage; minder reparatiewagens.\n" +
+                    "**100%** = Standaardinstelling van het spel.\n" +
+                    "**500%** = Snellere slijtage.\n\n" +
+                    "**Snowy Roads:** Sneeuw blijft zichtbaar bij 0%, maar sneeuwploegen rijden mogelijk niet uit. Probeer 5% of hoger voor meer ritten (niet gegarandeerd)."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Rijstrookslijtage resetten" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Zet rijstrookslijtage terug naar **100%** zonder de wegreparatie-instellingen te wijzigen." },

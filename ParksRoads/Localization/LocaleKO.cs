@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "차선 마모 / 도로 손상" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "**시간과 교통량**에 따른 도로 열화 속도를 조정합니다.\n" +
-                    "**0%** = 도로 마모 없음. 기존 마모도 제거합니다.\n" +
-                    "마모 수리 차량은 출동하지 않으며 제설차도 멈출 수 있습니다. 사고 대응은 계속됩니다.\n" +
-                    "**5%** = 도로 마모가 훨씬 느려집니다.\n" +
-                    "**100%** = 기본값.\n" +
-                    "**500%** = 도로 마모가 빨라집니다.\n" +
-                    "도로 마모 / 손상에 사용되는 차선 열화 데이터를 변경합니다." },
+                    "**시간과 교통량**에 따른 도로 마모 속도를 조절합니다.\n" +
+                    "**0%** = 마모 없음. 기존 손상을 없애고 불필요한 도로 보수 차량을 복귀시킵니다. 사고 대응은 계속됩니다.\n\n" +
+                    "**5%** = 마모가 훨씬 느려지고 보수 차량 출동도 줄어듭니다.\n" +
+                    "**100%** = 게임 기본값.\n" +
+                    "**500%** = 마모가 빨라집니다.\n\n" +
+                    "**Snowy Roads:** 0%에서도 눈은 표시되지만 제설차가 출동하지 않을 수 있습니다. 출동을 늘리려면 5% 이상을 시도하세요(보장되지 않음)."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "차선 마모 초기화" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "도로 수리 설정은 그대로 두고 차선 마모만 **100%**로 되돌립니다." },
