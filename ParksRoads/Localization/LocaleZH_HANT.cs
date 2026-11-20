@@ -106,7 +106,7 @@ namespace ParksRoads
                     "**5%** = 磨損大幅減慢，修路車出勤更少。\n" +
                     "**100%** = 遊戲預設。\n" +
                     "**500%** = 磨損加快，更多修路車出勤。\n\n" +
-                    "**Snowy Roads：** 設為0%仍會顯示積雪，但除雪車可能不出勤。想讓除雪車更常出動，可嘗試5%或更高。"
+                    "Snowy Roads： 設為0%仍會顯示積雪，但<除雪車可能不出勤>。想讓除雪車更常出動，可嘗試5%或更高。"
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "重設車道磨損" },
