@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <!-- keep configs -->
         <Configurations>Debug;Release</Configurations>
@@ -9,7 +9,7 @@
         <PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 
         <!-- Single source of truth for version number -->
-        <Version>1.0.0</Version>
+        <Version>1.1.0</Version>
         <AssemblyVersion>$(Version).0</AssemblyVersion>
         <FileVersion>$(Version).0</FileVersion>
         <GameVersion>1.6.*</GameVersion>
@@ -93,7 +93,9 @@
 
     <!-- AUTO UPDATE PublishConfiguration ModVersion using CSPROJ Version number
 	     remove bom, make EOL=CRLF, and left-align text -->
-    <Target Name="UpdatePublishConfigVersion" BeforeTargets="Build" Condition="'$(Configuration)' == 'Release'         AND Exists('$(MSBuildProjectDirectory)\Scripts\Update-PublishConfig.ps1')          AND Exists('$(MSBuildProjectDirectory)\$(PublishConfigurationPath)')">
+    <Target Name="UpdatePublishConfigVersion"
+            BeforeTargets="PrepareForBuild"
+            Condition="Exists('$(MSBuildProjectDirectory)\Scripts\Update-PublishConfig.ps1') AND Exists('$(MSBuildProjectDirectory)\$(PublishConfigurationPath)')">
 
         <Message Text="ParksRoads PublishConfig: syncing ModVersion + normalizing EOL/BOM + left-align blocks..." Importance="high" />
 
