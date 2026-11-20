@@ -261,11 +261,16 @@ namespace ParksRoads
                         if (skippedTruckDetailsLogged < kSkippedTruckLogLimit)
                         {
                             skippedTruckDetailsLogged++;
+                            int pendingCount = vehicleRef.ValueRO.m_RequestCount;
+                            int dispatchCount = dispatches.Length;
+                            bool isRoadTarget = roadConditions.HasComponent(currentTarget);
+                            bool isAccidentTarget = accidents.HasComponent(currentTarget);
+                            bool isVehicleTarget = vehicles.HasComponent(currentTarget);
                             LogUtils.Info(Mod.s_Log,
                                 () => $"{Mod.ModTag} Lane wear: preserved truck {entity} Reason=OtherCurrentTarget " +
-                                      $"Target={currentTarget} Flags={flags} Pending={vehicleRef.ValueRO.m_RequestCount} " +
-                                      $"Dispatches={dispatches.Length} RoadTarget={roadConditions.HasComponent(currentTarget)} " +
-                                      $"AccidentTarget={accidents.HasComponent(currentTarget)} VehicleTarget={vehicles.HasComponent(currentTarget)}");
+                                      $"Target={currentTarget} Flags={flags} Pending={pendingCount} " +
+                                      $"Dispatches={dispatchCount} RoadTarget={isRoadTarget} " +
+                                      $"AccidentTarget={isAccidentTarget} VehicleTarget={isVehicleTarget}");
                         }
 
                         continue;
@@ -317,10 +322,12 @@ namespace ParksRoads
                         if (skippedTruckDetailsLogged < kSkippedTruckLogLimit)
                         {
                             skippedTruckDetailsLogged++;
+                            int pendingCount = vehicleRef.ValueRO.m_RequestCount;
+                            int dispatchCount = dispatches.Length;
                             LogUtils.Info(Mod.s_Log,
                                 () => $"{Mod.ModTag} Lane wear: preserved truck {entity} Reason=QueuedOtherWork " +
-                                      $"Target={currentTarget} Flags={flags} Pending={vehicleRef.ValueRO.m_RequestCount} " +
-                                      $"Dispatches={dispatches.Length} QueuedRoad={queuedRoad} QueuedNonRoad={queuedNonRoad} " +
+                                      $"Target={currentTarget} Flags={flags} Pending={pendingCount} " +
+                                      $"Dispatches={dispatchCount} QueuedRoad={queuedRoad} QueuedNonRoad={queuedNonRoad} " +
                                       $"Accident={queuedAccident} Vehicle={queuedVehicle} RoadStillNeeded={queuedRoadPriority} " +
                                       $"MissingRequests={missingRequests}");
                         }
