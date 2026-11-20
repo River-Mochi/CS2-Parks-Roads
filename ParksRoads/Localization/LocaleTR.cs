@@ -102,6 +102,8 @@ namespace ParksRoads
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Şerit aşınması / yol hasarı" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
                     "Yolların **zaman ve trafik** nedeniyle ne kadar hızlı bozulduğunu kontrol eder.\n" +
+                    "**0%** = yol aşınması yok; mevcut aşınmayı temizler.\n" +
+                    "Aşınma için onarım aracı çıkmaz; kar küreme araçları da durabilir. Kazalara müdahale sürer.\n" +
                     "**5%** = çok daha yavaş yol aşınması.\n" +
                     "**100%** = oyun varsayılanı.\n" +
                     "**500%** = daha hızlı yol aşınması.\n" +
