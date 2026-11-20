@@ -13,7 +13,7 @@ namespace ParksRoads
 {
     using System;                    // Exception
     using Colossal.IO.AssetDatabase; // FileLocation
-    using Colossal.PSI.Environment;   // EnvPath
+    using Colossal.PSI.Environment;  // EnvPath
     using CS2Shared.RiverMochi;      // LogUtils, ShellOpen
     using Game;                      // IsGame
     using Game.Modding;              // IMod, ModSetting
@@ -66,7 +66,7 @@ namespace ParksRoads
         public const float MaintenanceStepPercent = 10f;
 
         // Road wear speed: percent (5%..500% = 0.05x..5x).
-        public const float RoadWearMinPercent = 5f;
+        public const float RoadWearMinPercent = 0f;
         public const float RoadWearMaxPercent = 500f;
         public const float RoadWearStepPercent = 5f;
 
