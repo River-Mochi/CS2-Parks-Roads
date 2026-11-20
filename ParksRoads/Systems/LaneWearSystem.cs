@@ -12,7 +12,8 @@
 // - Run-once system: enabled on city load or when settings Apply() enables it.
 // - Reads authoring factors when available and caches them per prefab entity so changes do not stack.
 // - Affects how quickly lanes accumulate deterioration from BOTH time and traffic.
-// - At 0%, also clears saved wear on live lanes and road edges once.
+// - At 0%, clears existing wear and releases obsolete road-only maintenance routes.
+// - Preserve accident response and any other queued non-road work.
 
 namespace ParksRoads
 {
@@ -21,10 +22,12 @@ namespace ParksRoads
     using Game;
     using Game.Common;
     using Game.Net;
+    using Game.Pathfind;
     using Game.Prefabs;
     using Game.Simulation;
     using Game.Tools;
     using Game.SceneFlow;
+    using Game.Vehicles;
     using System.Collections.Generic;
     using Unity.Entities;
 
@@ -159,6 +162,11 @@ namespace ParksRoads
             int roadsCleared = 0;
             int lanesScanned = 0;
             int roadsScanned = 0;
+            int trucksSeen = 0;
+            int trucksReturning = 0;
+            int trucksOnRoadRoutes = 0;
+            int trucksWithOtherWork = 0;
+            int trucksRecalled = 0;
 
             if (percent == 0f)
             {
@@ -190,6 +198,113 @@ namespace ParksRoads
                         roadsCleared++;
                     }
                 }
+
+                // A van can retain a multi-stop repair route after its roads have been
+                // fully repaired. Redirect only road vehicles whose current route is
+                // for a zero-priority road, and only if no other work is queued.
+                // Match vanilla MaintenanceVehicleAISystem.ReturnToDepot.
+                ComponentLookup<PrefabRef> vehiclePrefabs = SystemAPI.GetComponentLookup<PrefabRef>(true);
+                ComponentLookup<Owner> vehicleOwners = SystemAPI.GetComponentLookup<Owner>(true);
+                ComponentLookup<MaintenanceVehicleData> vehicleData =
+                    SystemAPI.GetComponentLookup<MaintenanceVehicleData>(true);
+                ComponentLookup<NetCondition> roadConditions =
+                    SystemAPI.GetComponentLookup<NetCondition>(true);
+                ComponentLookup<MaintenanceRequest> maintenanceRequests =
+                    SystemAPI.GetComponentLookup<MaintenanceRequest>(true);
+
+                foreach ((
+                    RefRW<Game.Vehicles.MaintenanceVehicle> vehicleRef,
+                    RefRW<Game.Vehicles.Car> carRef,
+                    RefRW<PathOwner> pathRef,
+                    RefRW<Target> targetRef,
+                    DynamicBuffer<ServiceDispatch> dispatches,
+                    Entity entity) in SystemAPI
+                         .Query<
+                             RefRW<Game.Vehicles.MaintenanceVehicle>,
+                             RefRW<Game.Vehicles.Car>,
+                             RefRW<PathOwner>,
+                             RefRW<Target>,
+                             DynamicBuffer<ServiceDispatch>>()
+                         .WithAll<PrefabRef, Owner>()
+                         .WithNone<Deleted, Temp>()
+                         .WithEntityAccess())
+                {
+                    PrefabRef prefabRef = vehiclePrefabs[entity];
+                    if (!vehicleData.TryGetComponent(prefabRef.m_Prefab, out MaintenanceVehicleData prefab) ||
+                        (prefab.m_MaintenanceType & MaintenanceType.Road) == MaintenanceType.None)
+                    {
+                        continue;
+                    }
+
+                    trucksSeen++;
+                    MaintenanceVehicleFlags flags = vehicleRef.ValueRO.m_State;
+                    if ((flags & MaintenanceVehicleFlags.Returning) != 0)
+                    {
+                        trucksReturning++;
+                        continue;
+                    }
+
+                    Entity currentTarget = targetRef.ValueRO.m_Target;
+                    if ((flags & MaintenanceVehicleFlags.EdgeTarget) == 0 ||
+                        (flags & MaintenanceVehicleFlags.TransformTarget) != 0 ||
+                        !roadConditions.HasComponent(currentTarget))
+                    {
+                        trucksWithOtherWork++;
+                        continue;
+                    }
+
+                    trucksOnRoadRoutes++;
+                    if (NetDeteriorationSystem.GetMaintenancePriority(roadConditions[currentTarget]) > 0)
+                    {
+                        continue;
+                    }
+
+                    bool hasOtherWork = false;
+                    foreach (ServiceDispatch dispatch in dispatches)
+                    {
+                        if (!maintenanceRequests.TryGetComponent(dispatch.m_Request, out MaintenanceRequest request))
+                        {
+                            continue;
+                        }
+
+                        if (!roadConditions.HasComponent(request.m_Target) ||
+                            NetDeteriorationSystem.GetMaintenancePriority(roadConditions[request.m_Target]) > 0)
+                        {
+                            hasOtherWork = true;
+                            break;
+                        }
+                    }
+
+                    if (hasOtherWork)
+                    {
+                        trucksWithOtherWork++;
+                        continue;
+                    }
+
+                    // Clear stale stops and use the exact vanilla return-state
+                    // transition and path retargeting; do not touch accident tasks.
+                    dispatches.Clear();
+
+                    ref Game.Vehicles.MaintenanceVehicle vehicle = ref vehicleRef.ValueRW;
+                    vehicle.m_RequestCount = 0;
+                    vehicle.m_MaintainEstimate = 0;
+                    vehicle.m_State &= ~(MaintenanceVehicleFlags.TransformTarget |
+                                         MaintenanceVehicleFlags.EdgeTarget |
+                                         MaintenanceVehicleFlags.TryWork |
+                                         MaintenanceVehicleFlags.Working |
+                                         MaintenanceVehicleFlags.ClearingDebris);
+                    vehicle.m_State |= MaintenanceVehicleFlags.Returning;
+
+                    carRef.ValueRW.m_Flags &= ~(CarFlags.Warning |
+                                                CarFlags.Working |
+                                                CarFlags.SignalAnimation1 |
+                                                CarFlags.SignalAnimation2);
+
+                    ref PathOwner path = ref pathRef.ValueRW;
+                    ref Target target = ref targetRef.ValueRW;
+                    VehicleUtils.SetTarget(ref path, ref target, vehicleOwners[entity].m_Owner);
+                    trucksRecalled++;
+                }
             }
 
             // One report per city load or settings apply; no per-frame logging.
@@ -198,7 +313,9 @@ namespace ParksRoads
                 () => $"{Mod.ModTag} Lane wear: Percent={percent:0.#}% " +
                       $"Prefabs={total} Changed={changed} ActiveTime={activeTimePrefabs} ActiveTraffic={activeTrafficPrefabs}" +
                       (percent == 0f
-                          ? $" ClearedLanes={lanesCleared}/{lanesScanned} ClearedRoads={roadsCleared}/{roadsScanned}"
+                          ? $" ClearedLanes={lanesCleared}/{lanesScanned} ClearedRoads={roadsCleared}/{roadsScanned}" +
+                            $" RoadFleet={trucksSeen} RoadRoutes={trucksOnRoadRoutes} Recalled={trucksRecalled}" +
+                            $" AlreadyReturning={trucksReturning} OtherWork={trucksWithOtherWork}"
                           : " WearAccumulation=on"));
 
             Enabled = false;
