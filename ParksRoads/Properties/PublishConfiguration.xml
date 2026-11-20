@@ -57,8 +57,11 @@ tags: road maintenance, slow road speed, reduce damaged roads.
 <Dependency Id="" />
 <!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
-- player request filled: change lane wear slider from 5% low to 0% -100%. if 0%, then no road wear
+- player request filled: reduced slider from 5% low to 0% option to allow no road wear option.
+- Auto recalls trucks assigned to obsolete road repairs, reducing unnecessary traffic.
+- Accident response not affected.
 - suggest setting road wear to at least 1% if using the Snowy Roads mod
+- updated all translations for tooltips.
 </ChangeLog>
 <!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
 <ExternalLink Type="discord" Url="https://discord.gg/gwXgvtyhjc" />
