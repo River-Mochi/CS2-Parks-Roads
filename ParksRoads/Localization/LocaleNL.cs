@@ -105,8 +105,8 @@ namespace ParksRoads
                     "**0%** = Geen slijtage; verwijdert schade en roept onnodige reparatiewagens terug. Hulp bij ongevallen blijft werken.\n\n" +
                     "**5%** = Veel langzamere slijtage; minder reparatiewagens.\n" +
                     "**100%** = Standaardinstelling van het spel.\n" +
-                    "**500%** = Snellere slijtage.\n\n" +
-                    "**Snowy Roads:** Sneeuw blijft zichtbaar bij 0%, maar sneeuwploegen rijden mogelijk niet uit. Probeer 5% of hoger voor meer ritten (niet gegarandeerd)."
+                    "**500%** = Snellere slijtage; meer reparatiewagens onderweg.\n\n" +
+                    "**Snowy Roads:** Sneeuw blijft zichtbaar bij 0%, maar sneeuwploegen rijden mogelijk niet uit. Probeer 5% of hoger voor meer ritten."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Rijstrookslijtage resetten" },
