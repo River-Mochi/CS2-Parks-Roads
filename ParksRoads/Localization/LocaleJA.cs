@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "車線劣化 / 道路損傷" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "**時間と交通量**による道路の劣化速度を調整します。\n" +
-                    "**0%** = 道路の摩耗なし。既存の摩耗も消去します。\n" +
-                    "摩耗修理の車両は出動せず、除雪車も出動しない場合があります。事故対応は続きます。\n" +
-                    "**5%** = 道路の劣化が大幅に遅くなります。\n" +
-                    "**100%** = バニラ。\n" +
-                    "**500%** = 道路の劣化が速くなります。\n" +
-                    "道路の劣化 / 損傷に使われる車線劣化データを変更します。" },
+                    "**時間と交通量**による道路の摩耗速度を調整します。\n" +
+                    "**0%** = 摩耗なし。既存の損傷を消し、不要な道路修理車両を車庫へ戻します。事故対応は継続します。\n\n" +
+                    "**5%** = 摩耗が大幅に遅くなり、修理車両の出動も減ります。\n" +
+                    "**100%** = ゲーム標準。\n" +
+                    "**500%** = 道路の摩耗が速くなり、修理車両の出動も増えます。\n\n" +
+                    "Snowy Roads： 0%でも雪は表示されますが、<除雪車が出動しない場合があります>。出動を増やしたい場合は5%以上を試してください。"
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "車線劣化をリセット" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "道路修理設定を変えずに、車線劣化を **100%** に戻します。" },

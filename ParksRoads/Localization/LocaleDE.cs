@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Fahrbahnverschleiß / Straßenschäden" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Steuert, wie schnell Straßen durch **Zeit und Verkehr** verschleißen.\n" +
-                    "**0%** = kein Straßenverschleiß; vorhandene Schäden werden entfernt.\n" +
-                    "Keine Reparatureinsätze wegen Verschleiß; Schneepflüge können ausbleiben. Unfallhilfe bleibt aktiv.\n" +
-                    "**5%** = deutlich langsamerer Straßenverschleiß.\n" +
-                    "**100%** = Vanilla.\n" +
-                    "**500%** = schnellerer Straßenverschleiß.\n" +
-                    "Ändert die Fahrbahn-Verschleißdaten für Straßenverschleiß / Schäden." },
+                    "Regelt den Straßenverschleiß durch **Zeit und Verkehr**.\n" +
+                    "**0%** = Kein Verschleiß; entfernt Schäden und ruft unnötige Reparaturfahrzeuge zurück. Unfallhilfe bleibt aktiv.\n\n" +
+                    "**5%** = Viel langsamerer Verschleiß; weniger Reparaturfahrzeuge.\n" +
+                    "**100%** = Spielstandard.\n" +
+                    "**500%** = Schnellerer Verschleiß; mehr Reparaturfahrzeuge unterwegs.\n\n" +
+                    "Snowy Roads: Schnee bleibt bei 0% sichtbar, aber <Schneepflüge fahren möglicherweise nicht aus>. Für mehr Einsätze 5% oder höher versuchen."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Fahrbahnverschleiß zurücksetzen" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Setzt den Fahrbahnverschleiß auf **100%** zurück, ohne die Straßenreparatur-Einstellungen zu ändern." },

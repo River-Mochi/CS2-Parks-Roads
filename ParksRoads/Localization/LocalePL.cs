@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Zużycie pasów / uszkodzenia dróg" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Kontroluje tempo niszczenia dróg przez **czas i ruch uliczny**.\n" +
-                    "**0%** = brak zużycia dróg; usuwa istniejące zużycie.\n" +
-                    "Brak napraw z powodu zużycia; pługi mogą nie wyjeżdżać. Obsługa wypadków działa nadal.\n" +
-                    "**5%** = znacznie wolniejsze zużycie.\n" +
-                    "**100%** = ustawienie gry.\n" +
-                    "**500%** = szybsze zużycie.\n" +
-                    "Zmienia dane degradacji pasów używane dla zużycia / uszkodzeń dróg." },
+                    "Ustawia zużycie dróg przez **czas i ruch uliczny**.\n" +
+                    "**0%** = Brak zużycia; usuwa uszkodzenia i odsyła zbędne pojazdy naprawcze do bazy. Obsługa wypadków nadal działa.\n\n" +
+                    "**5%** = Znacznie wolniejsze zużycie; mniej pojazdów naprawczych.\n" +
+                    "**100%** = Domyślne ustawienie gry.\n" +
+                    "**500%** = Szybsze zużycie; więcej pojazdów naprawczych wyjeżdża.\n\n" +
+                    "Snowy Roads: Śnieg nadal widać przy 0%, ale <pługi mogą nie wyjeżdżać>. Spróbuj 5% lub więcej, aby zwiększyć szansę ich wyjazdu."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Resetuj zużycie pasów" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Przywraca zużycie pasów do **100%** bez zmiany ustawień naprawy dróg." },

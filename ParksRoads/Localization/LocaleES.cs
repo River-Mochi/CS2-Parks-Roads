@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Desgaste de carriles / daños en carretera" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Controla la velocidad de deterioro de las carreteras por **tiempo y tráfico**.\n" +
-                    "**0%** = sin desgaste; elimina el desgaste existente.\n" +
-                    "Sin reparaciones por desgaste; puede que no salgan quitanieves. Se siguen atendiendo accidentes.\n" +
-                    "**5%** = desgaste mucho más lento.\n" +
-                    "**100%** = juego base.\n" +
-                    "**500%** = desgaste más rápido.\n" +
-                    "Modifica los datos de deterioro de carriles para el desgaste / daño de carreteras." },
+                    "Controla el desgaste de las carreteras por **tiempo y tráfico**.\n" +
+                    "**0%** = Sin desgaste; elimina daños y hace regresar los camiones de reparación innecesarios. Se siguen atendiendo accidentes.\n\n" +
+                    "**5%** = Desgaste mucho más lento; menos camiones de reparación.\n" +
+                    "**100%** = Valor predeterminado del juego.\n" +
+                    "**500%** = Desgaste más rápido; salen más camiones de reparación.\n\n" +
+                    "Snowy Roads: La nieve sigue visible al 0%, pero <puede que no salgan quitanieves>. Prueba 5% o más para favorecer sus salidas."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Restablecer desgaste de carriles" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Restablece el desgaste de carriles a **100%** sin cambiar los ajustes de reparación." },

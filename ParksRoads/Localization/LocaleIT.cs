@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Usura corsie / danni stradali" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Controlla quanto velocemente le strade si deteriorano per **tempo e traffico**.\n" +
-                    "**0%** = niente usura; elimina quella già presente.\n" +
-                    "Niente riparazioni per usura; gli spazzaneve potrebbero fermarsi. Gli incidenti vengono ancora gestiti.\n" +
-                    "**5%** = usura molto più lenta.\n" +
-                    "**100%** = gioco base.\n" +
-                    "**500%** = usura più rapida.\n" +
-                    "Modifica i dati di deterioramento delle corsie per usura / danni stradali." },
+                    "Regola l’usura stradale dovuta a **tempo e traffico**.\n" +
+                    "**0%** = Nessuna usura; elimina i danni e richiama i camion di riparazione non necessari. Gli incidenti vengono ancora gestiti.\n\n" +
+                    "**5%** = Usura molto più lenta; meno camion di riparazione.\n" +
+                    "**100%** = Valore predefinito del gioco.\n" +
+                    "**500%** = Usura più rapida; escono più camion di riparazione.\n\n" +
+                    "Snowy Roads: La neve resta visibile allo 0%, ma <gli spazzaneve potrebbero non uscire>. Prova il 5% o più per favorirne le uscite."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Ripristina usura corsie" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Riporta l’usura delle corsie a **100%** senza cambiare le impostazioni di riparazione." },
