@@ -75,6 +75,8 @@ tags: road maintenance, slow road speed, reduce damaged roads, no road wear.
 <Thumbnail Value="Properties/Thumbnail02.jpg" />
 <!--Screenshot, can be set multiple times-->
 <Screenshot Value="Properties/10-image-Options.jpg" />
+<Screenshot Value="Properties/20-image-Options-CN.jpg" />
+<Screenshot Value="Properties/30-image-Options-FR.jpg" />
 <!--Tag, can be set multiple times-->
 <Tag Value="Code Mod" />
 <!--Link to the forum post where the mod can be discussed-->
