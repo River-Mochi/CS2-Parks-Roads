@@ -101,13 +101,13 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Usure des voies / dégâts routiers" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Contrôle la vitesse de dégradation des routes due au **temps et au trafic**.\n" +
-                    "**0%** = aucune usure ; l’usure existante est effacée.\n" +
-                    "Plus de réparations liées à l’usure ; les chasse-neige peuvent s’arrêter. Les accidents restent pris en charge.\n" +
-                    "**5%** = usure beaucoup plus lente.\n" +
-                    "**100%** = jeu de base.\n" +
-                    "**500%** = usure plus rapide.\n" +
-                    "Modifie les données de détérioration des voies pour l’usure / les dégâts routiers." },
+                    "Règle l’usure des routes due au **temps et à la circulation**.\n" +
+                    "**0%** = Aucune usure ; efface les dégâts et rappelle les camions de réparation inutiles. Les accidents restent pris en charge.\n\n" +
+                    "**5%** = Usure bien plus lente ; moins de camions de réparation.\n" +
+                    "**100%** = Réglage par défaut du jeu.\n" +
+                    "**500%** = Usure plus rapide.\n\n" +
+                    "**Snowy Roads :** La neige reste visible à 0%, mais les chasse-neige peuvent ne pas sortir. Essayez 5% ou plus pour favoriser leurs sorties (sans garantie)."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Réinitialiser l’usure des voies" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Remet l’usure des voies à **100%** sans modifier les réglages de réparation." },
