@@ -114,7 +114,7 @@ namespace ParksRoads
                     "**5%** = Much slower wear; reduces repair trucks needed.\n" +
                     "**100%** = Vanilla game default\n" +
                     "**500%** = Faster damage, more repair trucks go out.\n\n" +
-                    "Snowy Roads: Snow visuals still work at 0%, but snowplow trucks may not be dispatched. Try 5% or higher for more snowplow activity."
+                    "Snowy Roads: Snow still works at 0%, but <snowplow trucks may not be dispatched>. Try 5% or higher for more snowplow activity."
                 },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Reset lane wear" },
