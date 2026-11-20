@@ -18,7 +18,7 @@ Control park maintenance, road repair trucks, and the rate of road wear.
 
 - **Park maintenance:** depot fleet size, work capacity, and work rate.
 - **Road maintenance:** depot fleet size, work capacity, and repair rate.
-- **Lane wear:** roads deteriorate slower or faster. 0% stops road wear, clears existing wear, and recalls unneeded repair trucks. Damaged roads make vehicles drive slower.
+- **Lane wear:** roads deteriorate slower or faster. 0% stops road wear and recalls unneeded repair trucks. Damaged roads make vehicles drive slower.
 - Accident response still happens normally.
 
 Each feature is optional. **100% = normal game default.**
