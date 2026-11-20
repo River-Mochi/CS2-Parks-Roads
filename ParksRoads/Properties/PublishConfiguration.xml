@@ -16,9 +16,9 @@ Control park maintenance, road repair trucks, and the rate of road wear.
 
 ### Adjust
 
-- **Park maintenance:** depot fleet size, work capacity, and work rate
-- **Road repair:** depot fleet size, work capacity, and repair rate
-- **Lane wear:** roads deteriorate slower or faster. Damaged roads make vehicles drive slower. 0% stops road wear, clears existing wear, recalls unneeded repair trucks
+- **Park maintenance:** depot fleet size, work capacity, and work rate.
+- **Road maintenance:** depot fleet size, work capacity, and repair rate.
+- **Lane wear:** roads deteriorate slower or faster. 0% stops road wear, clears existing wear, and recalls unneeded repair trucks. Damaged roads make vehicles drive slower.
 - Accident response still happens normally.
 
 Each feature is optional. **100% = normal game default.**
@@ -41,12 +41,14 @@ Each feature is optional. **100% = normal game default.**
 
 ### Compatibility
 - Snowy Roads mod: Snow visuals still work at 0%, but snowplow clearing may be limited when road maintenance dispatches are reduced, suggest 5% or higher on lane wear slider.
+- Some park and road features were originally in [All Transit + Trucks mod](https://mods.paradoxplaza.com/mods/138390/Windows). This standalone mod keeps them separate and simple.
 
-### 16+ Languages
+### Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
 
 tags: road maintenance, slow road speed, reduce damaged roads, no road wear.
 
+┌───────────────────────────────────────────────┐
 
 ## 🛻 公园维护、道路维修与磨损控制
 
