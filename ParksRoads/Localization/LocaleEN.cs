@@ -13,6 +13,11 @@ namespace ParksRoads
 {
     using System.Collections.Generic;
     using Colossal;
+    using Colossal.PSI.Common;
+    using Game.Net;
+    using Game.Simulation;
+    using Game.Vehicles;
+    using UnityEngine;
 
     public class LocaleEN : IDictionarySource
     {
@@ -103,13 +108,14 @@ namespace ParksRoads
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.RoadWearScalar)), "Lane wear / road damage" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.RoadWearScalar)),
-                    "Controls how quickly roads deteriorate from **time and traffic**.\n" +
+                    "Controls how fast roads deteriorate from **time and traffic**.\n" +
                     "**0%** = no road wear; clears existing wear.\n" +
-                    "No repair trucks for road wear; snow plows may stop. Accident response still works.\n" +
-                    "**5%** = much slower road wear.\n" +
+                    "No repair trucks needed for road wear; Accident response still works.\n\n" +
+                    "**5%** = much slower road wear, less trucks go out.\n" +
                     "**100%** = vanilla.\n" +
                     "**500%** = faster road wear.\n" +
-                    "This changes lane deterioration data for road wear / damage." },
+                    "Snowy Roads mod: Snow visuals still technically work at <0%>, but snowplow clearing is reduced because few or no trucks go out, suggest 5% or higher on lane wear slider."
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)), "Reset lane wear" },
                 { m_Setting.GetOptionDescLocaleID(nameof(PRLSettings.ResetLaneWearToVanillaButton)),

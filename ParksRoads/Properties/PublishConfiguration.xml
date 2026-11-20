@@ -16,9 +16,10 @@ Take control of park maintenance, road repair trucks, and lane wear.
 
 - **Park maintenance:** depot fleet size, work capacity, and work rate
 - **Road repair:** depot fleet size, work capacity, and repair rate
-- **Lane wear:** make roads deteriorate slower or faster. Damaged roads make vehicles drive slower.
+- **Lane wear:** roads deteriorate slower or faster. Damaged roads make vehicles drive slower. 0% stops road wear, clears existing wear, recalls unneeded repair trucks
+    - Accident response still happens normally.
 
-Each feature is optional. **100% = game default.**
+Each feature is optional. **100% = normal game default.**
 
 
 ## Performance
@@ -35,6 +36,9 @@ Each feature is optional. **100% = game default.**
 ## Credits
 - River-Mochi — mod author
 - Thumbnail photo by [nps.gov Yellowstone Park Renovation](https://www.nps.gov/yell/getinvolved/planning.htm)
+
+### Compatibility
+- Snowy Roads mod: Snow visuals still work at 0%, but snowplow clearing may be limited when road maintenance dispatches are reduced, suggest 5% or higher on lane wear slider.
 
 ### 16+ Languages
 English, Français, Deutsch, Español, Italiano, Polski, Português (Brasil), Português (Portugal), Nederlands, Türkçe, ไทย, Українська, 한국어, 日本語, 简体中文, 繁體中文, Tiếng Việt
@@ -57,10 +61,10 @@ tags: road maintenance, slow road speed, reduce damaged roads.
 <Dependency Id="" />
 <!-- Change log for new version. Single line or multi line. Supports minimal markdown subset -->
 <ChangeLog>
-- player request filled: reduced slider from 5% low to 0% option to allow no road wear option.
+- player request filled: reduced slider from 5% limit to 0% option to allow no road wear.
 - Auto recalls trucks assigned to obsolete road repairs, reducing unnecessary traffic.
 - Accident response not affected.
-- suggest setting road wear to at least 1% if using the Snowy Roads mod
+- Suggest setting road wear to at least 5% or more if using the Snowy Roads mod.
 - updated all translations for tooltips.
 </ChangeLog>
 <!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
