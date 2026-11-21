@@ -18,8 +18,7 @@ Control park maintenance, road repair trucks, and the rate of road wear.
 
 - **Park maintenance:** depot fleet size, work capacity, and work rate.
 - **Road maintenance:** depot fleet size, work capacity, and repair rate.
-- **Lane wear:** roads deteriorate slower or faster. 0% stops road wear and recalls unneeded repair trucks. Damaged roads make vehicles drive slower.
-    - Trucks still clear accidents normally.
+- **Lane wear:** roads deteriorate slower or faster. 0% stops road wear and recalls unneeded repair trucks. Damaged roads make vehicles drive slower. Trucks still clear accidents normally.
 
 Each feature is optional. **100% = normal game default.**
 
@@ -31,8 +30,8 @@ Each feature is optional. **100% = normal game default.**
 - See the in-game Options tooltips for details (hover any row, see 3rd panel, right side).
 
 ## Support and Feedback
-- Support by clicking Like 👍 (top right). No donations requested.
-- Feedback and PRs welcome through the GitHub and Discord links (icons on the right).
+*   Support by clicking Like 👍 (top right), no donations requested, just a free like.
+*   For feedback, use the [Discord](https://discord.gg/gwXgvtyhjc) | [Github](https://github.com/River-Mochi/CS2-Parks-Roads) links on this page. PRs are welcome, GPL-3.0 license.
 
 ## Credits
 - River-Mochi — mod author
